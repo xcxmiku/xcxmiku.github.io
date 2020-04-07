@@ -111,7 +111,7 @@ feed:
 ## Docs: https://hexo.io/docs/deployment.html
 deploy:
 - type: git
-  repository: https://github.com/xcxmiku/xcxmiku.github.io
+  repo: git@github.com:xcxmiku/xcxmiku.github.io.git
   branch: master
 - type: git
   repository: ssh://git@173.82.186.158:15627/~/blog.git
