@@ -19,7 +19,7 @@ jobs:
 
       - name: Configuration environment
         env:
-          TZ: Asia/Shanghai:  
+          TZ: Asia/Shanghai  
           HEXO_DEPLOY_PRI: ${{secrets.HEXO_DEPLOY_PRI}}
           GIT_USER: ${{secrets.GIT_USER}}
           GIT_EMAIL: ${{secrets.GIT_EMAIL}}
