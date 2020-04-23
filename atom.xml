@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://xcxmiku.com/"/>
-  <updated>2020-03-30T18:48:46.000Z</updated>
+  <updated>2020-04-22T15:41:35.000Z</updated>
   <id>http://xcxmiku.com/</id>
   
   <author>
@@ -15,6 +15,33 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>vulfocus通过</title>
+    <link href="http://xcxmiku.com/archives/41783/"/>
+    <id>http://xcxmiku.com/archives/41783/</id>
+    <published>2020-04-22T09:58:02.000Z</published>
+    <updated>2020-04-22T15:41:35.000Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h1 id=&quot;Vulfocus&quot;&gt;&lt;a href=&quot;#Vulfocus&quot; class=&quot;headerlink&quot; title=&quot;Vulfocus&quot;&gt;&lt;/a&gt;Vulfocus&lt;/h1&gt;&lt;h2 id=&quot;演示地址：http-vulfocus-fofa-so&quot;&gt;&lt;a
+        
+      
+    
+    </summary>
+    
+    
+      <category term="漏洞复现" scheme="http://xcxmiku.com/categories/%E6%BC%8F%E6%B4%9E%E5%A4%8D%E7%8E%B0/"/>
+    
+    
+      <category term="技术分享" scheme="http://xcxmiku.com/tags/%E6%8A%80%E6%9C%AF%E5%88%86%E4%BA%AB/"/>
+    
+  </entry>
   
   <entry>
     <title>CVE-2020-0796本地提权</title>
