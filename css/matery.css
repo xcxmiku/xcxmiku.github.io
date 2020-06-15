@@ -212,6 +212,22 @@ pre[class*="language-"] {
     white-space: pre-wrap !important;
 }
 
+/* 键盘 kbd 标签样式 */
+kbd {
+    margin: 0 3px;
+    padding: 3px 5px;
+    border-radius: 3px;
+    border: 1px solid #b4b4b4;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.25), 0 2px 1px 0 rgba(255, 255, 255, 0.6) inset;
+    font-family: 'Menlo';
+    font-size: 0.9rem;
+    font-weight: 600;
+    background-color: #f8f8f8;
+    color: #34495e;
+    line-height: 1.8rem;
+    white-space: nowrap;
+}
+
 b,
 strong {
     font-weight: bold;
@@ -1151,12 +1167,15 @@ article .article-tags .chip {
 }
 
 #artDetail .reprint {
-    margin: 15px 0 5px 0;
-    margin-bottom: 0.4rem;
+    margin: 15px 0 0.4rem;
     padding: 0.5rem 0.8rem;
     border: 1px solid #eee;
     line-height: 2;
     transition: box-shadow 0.3s ease-in-out
+}
+
+#artDetail .reprint-info {
+    word-break: break-word;
 }
 
 #artDetail .reprint:hover {
@@ -1310,7 +1329,7 @@ thead {
 
 .chip-container .chip:hover {
     color: #fff;
-    background: linear-gradient(to right, #3ebfd3 0%, #00c5b8 100%) !important;
+    background: linear-gradient(to right, #4cbf30 0%, #0f9d58 100%) !important;
 }
 
 .chip .tag-length {
@@ -1386,7 +1405,7 @@ thead {
     left: 18px;
     height: 100%;
     width: 4px;
-    background: #00c5b8;
+    background: #0f9d58;
 }
 
 @media only screen and (min-width: 900px) {
@@ -1622,8 +1641,8 @@ thead {
     margin: 0 0.5rem;
     padding: 0;
     color: #fff;
-    border: 1px solid #00c5b8;
-    background: radial-gradient(#3ebfd3, #00c5b8);
+    border: 1px solid #0f9d58;
+    background: radial-gradient(#4cbf30, #0f9d58);
     font-size: 0.9rem;
     border-radius: 50%;
     box-shadow: 0 4px 6px rgba(50, 50, 93, .21), 0 2px 3px rgba(0, 0, 0, .1);
@@ -1799,8 +1818,8 @@ thead {
 
 .other-skills .chip:hover {
     color: #fff;
-    background: linear-gradient(to right, #3ebfd3 0%, #00c5b8 100%);
-    border: 1px solid #3ebfd3;
+    background: linear-gradient(to right, #4cbf30 0%, #0f9d58 100%);
+    border: 1px solid #4cbf30;
     box-shadow: 0 5px 5px rgba(0, 0, 0, .25)
 }
 
