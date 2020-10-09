@@ -4,7 +4,7 @@
   <url>
     <loc>http://xcxmiku.com/archives/38a7a949/</loc>
     
-    <lastmod>2020-09-04</lastmod>
+    <lastmod>2020-10-09</lastmod>
     
   </url>
   
@@ -151,78 +151,78 @@
 
   <url>
     <loc>http://xcxmiku.com/</loc>
-    <lastmod>2020-09-16</lastmod>
+    <lastmod>2020-10-09</lastmod>
     <changefreq>daily</changefreq>
     <priority>1.0</priority>
   </url>
 
   
   <url>
-    <loc>http://xcxmiku.com/tags/%E6%BC%8F%E6%B4%9E%E5%A4%8D%E7%8E%B0/</loc>
-    <lastmod>2020-09-16</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>http://xcxmiku.com/tags/%E8%B5%84%E6%BA%90%E5%88%86%E4%BA%AB/</loc>
-    <lastmod>2020-09-16</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
     <loc>http://xcxmiku.com/tags/CMS/</loc>
-    <lastmod>2020-09-16</lastmod>
+    <lastmod>2020-10-09</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>http://xcxmiku.com/tags/%E5%8A%A0%E5%AF%86%E8%B4%A7%E5%B8%81/</loc>
-    <lastmod>2020-09-16</lastmod>
+    <lastmod>2020-10-09</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
-    <loc>http://xcxmiku.com/tags/Linux/</loc>
-    <lastmod>2020-09-16</lastmod>
+    <loc>http://xcxmiku.com/tags/%E8%B5%84%E6%BA%90%E5%88%86%E4%BA%AB/</loc>
+    <lastmod>2020-10-09</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>http://xcxmiku.com/tags/%E6%BC%8F%E6%B4%9E%E5%A4%8D%E7%8E%B0/</loc>
+    <lastmod>2020-10-09</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>http://xcxmiku.com/tags/%E6%96%87%E4%BB%B6%E5%8C%85%E5%90%AB/</loc>
-    <lastmod>2020-09-16</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>http://xcxmiku.com/tags/PHP/</loc>
-    <lastmod>2020-09-16</lastmod>
+    <lastmod>2020-10-09</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>http://xcxmiku.com/tags/sql%E6%B3%A8%E5%85%A5/</loc>
-    <lastmod>2020-09-16</lastmod>
+    <lastmod>2020-10-09</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
-    <loc>http://xcxmiku.com/tags/%E6%8A%80%E6%9C%AF%E5%88%86%E4%BA%AB/</loc>
-    <lastmod>2020-09-16</lastmod>
+    <loc>http://xcxmiku.com/tags/Linux/</loc>
+    <lastmod>2020-10-09</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>http://xcxmiku.com/tags/PHP/</loc>
+    <lastmod>2020-10-09</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>http://xcxmiku.com/tags/XXE/</loc>
-    <lastmod>2020-09-16</lastmod>
+    <lastmod>2020-10-09</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>http://xcxmiku.com/tags/%E6%8A%80%E6%9C%AF%E5%88%86%E4%BA%AB/</loc>
+    <lastmod>2020-10-09</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
@@ -231,28 +231,28 @@
   
   <url>
     <loc>http://xcxmiku.com/categories/%E6%8A%80%E6%9C%AF%E5%88%86%E4%BA%AB/</loc>
-    <lastmod>2020-09-16</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>http://xcxmiku.com/categories/%E8%B5%84%E6%BA%90%E5%88%86%E4%BA%AB/</loc>
-    <lastmod>2020-09-16</lastmod>
+    <lastmod>2020-10-09</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>http://xcxmiku.com/categories/%E5%8A%A0%E5%AF%86%E8%B4%A7%E5%B8%81/</loc>
-    <lastmod>2020-09-16</lastmod>
+    <lastmod>2020-10-09</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>http://xcxmiku.com/categories/%E8%B5%84%E6%BA%90%E5%88%86%E4%BA%AB/</loc>
+    <lastmod>2020-10-09</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>http://xcxmiku.com/categories/%E6%BC%8F%E6%B4%9E%E5%A4%8D%E7%8E%B0/</loc>
-    <lastmod>2020-09-16</lastmod>
+    <lastmod>2020-10-09</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>

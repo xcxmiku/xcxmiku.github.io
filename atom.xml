@@ -66,9 +66,9 @@
       <category term="资源分享" scheme="http://xcxmiku.com/categories/%E8%B5%84%E6%BA%90%E5%88%86%E4%BA%AB/"/>
     
     
-      <category term="漏洞复现" scheme="http://xcxmiku.com/tags/%E6%BC%8F%E6%B4%9E%E5%A4%8D%E7%8E%B0/"/>
-    
       <category term="资源分享" scheme="http://xcxmiku.com/tags/%E8%B5%84%E6%BA%90%E5%88%86%E4%BA%AB/"/>
+    
+      <category term="漏洞复现" scheme="http://xcxmiku.com/tags/%E6%BC%8F%E6%B4%9E%E5%A4%8D%E7%8E%B0/"/>
     
   </entry>
   
@@ -210,11 +210,11 @@
   </entry>
   
   <entry>
-    <title>Burp Suite v2020.9的汉化以及无cmd框启动</title>
+    <title>Burp Suite v2020.9.2的汉化以及无cmd框启动</title>
     <link href="http://xcxmiku.com/archives/38a7a949/"/>
     <id>http://xcxmiku.com/archives/38a7a949/</id>
     <published>2019-12-02T14:20:02.000Z</published>
-    <updated>2020-09-04T03:41:35.000Z</updated>
+    <updated>2020-10-09T03:41:35.000Z</updated>
     
     <summary type="html">
     
@@ -222,7 +222,7 @@
       
         
         
-          &lt;h2 id=&quot;更新日志&quot;&gt;&lt;a href=&quot;#更新日志&quot; class=&quot;headerlink&quot;
+          &lt;h2 id=&quot;更新日志&quot;&gt;&lt;a href=&quot;#更新日志&quot; class=&quot;headerlink&quot; title=&quot;更新日志&quot;&gt;&lt;/a&gt;更新日志&lt;/h2&gt;&lt;h2 id=&quot;主要更新日志&quot;&gt;&lt;a href=&quot;#主要更新日志&quot; class=&quot;headerlink&quot;
         
       
     
