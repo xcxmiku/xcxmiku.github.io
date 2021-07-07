@@ -4,6 +4,31 @@
   
     
     <entry>
+      <title>IMEWDBLD.EXE文件下载</title>
+      <link href="/archives/36686/"/>
+      <url>/archives/36686/</url>
+      
+        <content type="html"><![CDATA[<h2 id="来源"><a href="#来源" class="headerlink" title="来源"></a>来源</h2><p><a href="https://twitter.com/notwhickey/status/1367493406835040265">https://twitter.com/notwhickey/status/1367493406835040265</a></p><p><img src="https://i.loli.net/2021/07/07/I2lqOLXGor5xyWe.png"></p><h2 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h2><p>C:\Windows\System32\IME\SHARED\IMEWDBLD.EXE 为Windows自带程序，描述为Microsoft IME Open Extended Dictionary Module，直译为微软输入法编辑器打开扩展词典模块。该模块可用于下载文件。</p><p><img src="https://i.loli.net/2021/07/07/x8U1poJnfgZadqQ.png"></p><h2 id="正文"><a href="#正文" class="headerlink" title="正文"></a>正文</h2><h5 id="启用HTTP服务"><a href="#启用HTTP服务" class="headerlink" title="启用HTTP服务"></a>启用HTTP服务</h5><pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">python -m http.server 80<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre><p><img src="https://i.loli.net/2021/07/07/UZGjTX8Ll5vsoCE.png"></p><h5 id="下载文件"><a href="#下载文件" class="headerlink" title="下载文件"></a>下载文件</h5><pre class="line-numbers language-powershell" data-language="powershell"><code class="language-powershell">C:\Windows\System32\IME\SHARED\IMEWDBLD<span class="token punctuation">.</span>EXE http:<span class="token operator">/</span><span class="token operator">/</span>127<span class="token punctuation">.</span>0<span class="token punctuation">.</span>0<span class="token punctuation">.</span>1<span class="token operator">/</span>test<span class="token punctuation">.</span>txt<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre><p><img src="https://i.loli.net/2021/07/07/c97NaGmXn5K4tFI.png"></p><p>运行后会报错，但实则文件已在下载</p><h5 id="查找文件"><a href="#查找文件" class="headerlink" title="查找文件"></a>查找文件</h5><p>下载后的文件存储在%LocalAppData%\Microsoft\Windows\INetCache&lt;8位随机数字字母&gt;/&lt;文件名&gt;[1].&lt;后缀名&gt;</p><p>该目录为隐藏目录，文件资源管理器无法查看，使用forfiles查找文件</p><pre class="line-numbers language-powershell" data-language="powershell"><code class="language-powershell">forfiles <span class="token operator">/</span>P <span class="token string">"%localappdata%\Microsoft\Windows\INetCache\IE"</span> <span class="token operator">/</span>S <span class="token operator">/</span>M <span class="token operator">*</span> <span class="token operator">/</span>C <span class="token string">"cmd /c echo @path"</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre><p><img src="https://i.loli.net/2021/07/07/asept2zdc1Co9AB.png"></p><p>forfiles参数说明</p><table><thead><tr><th align="left">参数</th><th align="left">说明</th></tr></thead><tbody><tr><td align="left">/P <code>&lt;pathname&gt;</code></td><td align="left">指定从其开始搜索的路径。 默认情况下，搜索从当前工作目录开始。</td></tr><tr><td align="left">/M<code>&lt;searchmask&gt;</code></td><td align="left">根据指定的搜索掩码搜索文件。 默认的 searchmask 为 <code>*</code> 。</td></tr><tr><td align="left">/S</td><td align="left">指示 <strong>forfiles</strong> 命令以递归方式搜索子目录。</td></tr><tr><td align="left">/C <code>&lt;command&gt;</code></td><td align="left">对每个文件运行指定的命令。 命令字符串应以双引号括起来。 默认命令为 <code>&quot;cmd /c echo @file&quot;</code> 。</td></tr><tr><td align="left">@PATH</td><td align="left">文件的完整路径。</td></tr></tbody></table><p>详见<a href="https://docs.microsoft.com/zh-cn/windows-server/administration/windows-commands/forfiles">https://docs.microsoft.com/zh-cn/windows-server/administration/windows-commands/forfiles</a></p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 技术分享 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> Windows </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>CVE-2020-0796 RCE和LPE</title>
       <link href="/archives/57083/"/>
       <url>/archives/57083/</url>

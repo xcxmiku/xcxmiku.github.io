@@ -4,7 +4,7 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="VPS的配置与优化, 小晨曦 小晨曦的博客">
+    <meta name="keywords" content="IMEWDBLD.EXE,Windows文件下载,文件下载,内网渗透,bypass">
     <meta name="description" content="小晨曦的博客">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
@@ -16,7 +16,7 @@
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>VPS的配置与优化 | 小晨曦</title>
+    <title>IMEWDBLD.EXE文件下载 | 小晨曦</title>
     <link rel="icon" type="image/x-icon, image/vnd.microsoft.icon" href="/favicon.ico">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
@@ -330,12 +330,12 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/22.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/17.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">VPS的配置与优化</h1>
+                    <h1 class="description center-align post-title">IMEWDBLD.EXE文件下载</h1>
                 </div>
             </div>
         </div>
@@ -451,8 +451,8 @@
                     
                     <div class="article-tag">
                         
-                            <a href="/tags/Linux/">
-                                <span class="chip bg-color">Linux</span>
+                            <a href="/tags/Windows/">
+                                <span class="chip bg-color">Windows</span>
                             </a>
                         
                     </div>
@@ -476,28 +476,28 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2020-03-04
+                    2021-07-07
                 </div>
                 
 
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
-                    2020-03-06
+                    2021-07-07
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    558
+                    323
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    2 分
+                    1 分
                 </div>
                 
 
@@ -520,87 +520,52 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <p>因为某些原因重装了VPS，简单记录下重装后的配置。</p>
-<h3 id="连接"><a href="#连接" class="headerlink" title="连接"></a>连接</h3><p>推荐一个颜值很高且多终端同步的SSH客户端<a target="_blank" rel="noopener" href="https://termius.com/">Termius</a></p>
-<p><img src="https://i.loli.net/2020/03/05/Bv2ygLfKASeERlZ.png"></p>
-<p>vps上重装的系统是Ubuntu 18.04 LTS Server - 64 Bit </p>
-<h3 id="配置与优化"><a href="#配置与优化" class="headerlink" title="配置与优化"></a>配置与优化</h3><h4 id="更新源和软件"><a href="#更新源和软件" class="headerlink" title="更新源和软件"></a>更新源和软件</h4><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">apt</span> update
+                <h2 id="来源"><a href="#来源" class="headerlink" title="来源"></a>来源</h2><p><a target="_blank" rel="noopener" href="https://twitter.com/notwhickey/status/1367493406835040265">https://twitter.com/notwhickey/status/1367493406835040265</a></p>
+<p><img src="https://i.loli.net/2021/07/07/I2lqOLXGor5xyWe.png"></p>
+<h2 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h2><p>C:\Windows\System32\IME\SHARED\IMEWDBLD.EXE 为Windows自带程序，描述为Microsoft IME Open Extended Dictionary Module，直译为微软输入法编辑器打开扩展词典模块。该模块可用于下载文件。</p>
+<p><img src="https://i.loli.net/2021/07/07/x8U1poJnfgZadqQ.png"></p>
+<h2 id="正文"><a href="#正文" class="headerlink" title="正文"></a>正文</h2><h5 id="启用HTTP服务"><a href="#启用HTTP服务" class="headerlink" title="启用HTTP服务"></a>启用HTTP服务</h5><pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">python -m http.server 80<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
-<span class="token function">apt</span> upgrade<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+<p><img src="https://i.loli.net/2021/07/07/UZGjTX8Ll5vsoCE.png"></p>
+<h5 id="下载文件"><a href="#下载文件" class="headerlink" title="下载文件"></a>下载文件</h5><pre class="line-numbers language-powershell" data-language="powershell"><code class="language-powershell">C:\Windows\System32\IME\SHARED\IMEWDBLD<span class="token punctuation">.</span>EXE http:<span class="token operator">/</span><span class="token operator">/</span>127<span class="token punctuation">.</span>0<span class="token punctuation">.</span>0<span class="token punctuation">.</span>1<span class="token operator">/</span>test<span class="token punctuation">.</span>txt<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
-<h4 id="将语言设置为中文"><a href="#将语言设置为中文" class="headerlink" title="将语言设置为中文"></a>将语言设置为中文</h4><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">dpkg-reconfigure locales<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<p><img src="https://i.loli.net/2021/07/07/c97NaGmXn5K4tFI.png"></p>
+<p>运行后会报错，但实则文件已在下载</p>
+<h5 id="查找文件"><a href="#查找文件" class="headerlink" title="查找文件"></a>查找文件</h5><p>下载后的文件存储在%LocalAppData%\Microsoft\Windows\INetCache&lt;8位随机数字字母&gt;/&lt;文件名&gt;[1].&lt;后缀名&gt;</p>
+<p>该目录为隐藏目录，文件资源管理器无法查看，使用forfiles查找文件</p>
+<pre class="line-numbers language-powershell" data-language="powershell"><code class="language-powershell">forfiles <span class="token operator">/</span>P <span class="token string">"%localappdata%\Microsoft\Windows\INetCache\IE"</span> <span class="token operator">/</span>S <span class="token operator">/</span>M <span class="token operator">*</span> <span class="token operator">/</span>C <span class="token string">"cmd /c echo @path"</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
-<p><img src="https://i.loli.net/2020/03/05/wu8cT5Ja1HqLVUS.png"></p>
-<p>用空格选择全部zh开头的选项（也可只选择 zh_CN.UTF-8）</p>
-<p><img src="https://i.loli.net/2020/03/05/dJeg3DIp4CiMTB8.png"></p>
-<p>设置系统默认语言为 zh_CN.UTF-8</p>
-<p><img src="https://i.loli.net/2020/03/05/ABkwtDFj37EScK1.png"></p>
-<p>重新连接后默认语言就是中文了</p>
-<h4 id="修改时区"><a href="#修改时区" class="headerlink" title="修改时区"></a>修改时区</h4><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">timedatectl set-timezone Asia/Shanghai <span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-
-<h4 id="修改vps默认的root密码"><a href="#修改vps默认的root密码" class="headerlink" title="修改vps默认的root密码"></a>修改vps默认的root密码</h4><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">passwd</span> root<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-
-<p><img src="https://i.loli.net/2020/03/05/IM3abWGiB5nwulD.png"></p>
-<h4 id="安装常用工具"><a href="#安装常用工具" class="headerlink" title="安装常用工具"></a>安装常用工具</h4><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">apt</span> <span class="token function">install</span> <span class="token function">vim</span> <span class="token function">wget</span> <span class="token function">git</span> <span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-
-<h4 id="安装BBR-锐速"><a href="#安装BBR-锐速" class="headerlink" title="安装BBR/锐速"></a>安装BBR/锐速</h4><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">wget</span> -N --no-check-certificate <span class="token string">"https://github.000060000.xyz/tcpx.sh"</span> <span class="token operator">&amp;&amp;</span> <span class="token function">chmod</span> +x tcpx.sh <span class="token operator">&amp;&amp;</span> ./tcpx.sh<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-
-<p><img src="https://i.loli.net/2020/03/05/gdji4FrqzLhTY3M.png"></p>
-<p>详见<a target="_blank" rel="noopener" href="https://github.com/ylx2016/Linux-NetSpeed/releases">Linux-NetSpeed</a></p>
-<h4 id="修改SSH端口"><a href="#修改SSH端口" class="headerlink" title="修改SSH端口"></a>修改SSH端口</h4><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">vim</span> /etc/ssh/sshd_config<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-
-<p>在原本的Port 22下面加一行（可能是注释的，请删除#号）</p>
-<p>Port 2233 2233为需要修改的端口</p>
-<p><img src="https://i.loli.net/2020/03/06/sGKhCXPgHTwIkaL.png"></p>
-<p>重启服务</p>
-<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">systemctl restart sshd<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-
-<p>查看是否监听了修改的端口</p>
-<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">netstat</span> -ntl<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-
-<p>使用修改后的端口连接ssh</p>
-<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">ssh</span> -p <span class="token number">2233</span> root@127.0.0.1<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-
-<p>如果无误，将前面的Port 22注释掉</p>
-<h4 id="配置免密登录"><a href="#配置免密登录" class="headerlink" title="配置免密登录"></a>配置免密登录</h4><h5 id="生成密钥"><a href="#生成密钥" class="headerlink" title="生成密钥"></a>生成密钥</h5><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">ssh-keygen -t rsa<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-
-<p><img src="https://i.loli.net/2020/03/06/rKNmMd3SO1iITXb.png"></p>
-<p>按提示输入即可（也可一直回车使用空密码）</p>
-<p>公钥文件存储在C:\Users\15627.ssh\id_rsa.pub</p>
-<h5 id="将密钥上传至服务器"><a href="#将密钥上传至服务器" class="headerlink" title="将密钥上传至服务器"></a>将密钥上传至服务器</h5><p>Linux下可直接使用ssh-copy-id</p>
-<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">语法
-ssh-copy-id <span class="token punctuation">[</span>-i <span class="token punctuation">[</span>identity_file<span class="token punctuation">]</span><span class="token punctuation">]</span> <span class="token punctuation">[</span>user@<span class="token punctuation">]</span>machine
-例子
-ssh-copy-id -i ~/.ssh/id_rsa.pub root@127.0.0.1<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
-
-<p><img src="https://i.loli.net/2020/03/06/TSQKWMfOhbw9Fn5.png"></p>
-<p>Windows下目前没有自带ssh-copy-id，可使用scp</p>
-<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">语法
-<span class="token function">scp</span> <span class="token punctuation">[</span>参数<span class="token punctuation">]</span> <span class="token punctuation">[</span>原路径<span class="token punctuation">]</span> <span class="token punctuation">[</span>目标路径<span class="token punctuation">]</span>
-例子
-<span class="token function">scp</span> C:<span class="token punctuation">\</span>Users<span class="token punctuation">\</span>usernmae<span class="token punctuation">\</span>.ssh<span class="token punctuation">\</span>id_rsa.pub root@127.0.0.1:~/.ssh/win.pub<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
-
-<p><img src="https://i.loli.net/2020/03/06/LtNS9aPdEY7B3vs.png"></p>
-<p>然后使用ssh连接服务器将win.pub添加至authorized_keys</p>
-<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token builtin class-name">cd</span> /root/.ssh <span class="token operator">&amp;&amp;</span> <span class="token function">cat</span> win.pub <span class="token operator">>></span> authorized_keys<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-
-<p>即可免密登录vps</p>
-<h5 id="配置第三方软件免密登录"><a href="#配置第三方软件免密登录" class="headerlink" title="配置第三方软件免密登录"></a>配置第三方软件免密登录</h5><p><a target="_blank" rel="noopener" href="https://www.netsarang.com/zh/xshell/">Xshell</a></p>
-<p>菜单栏→工具→用户密钥管理者</p>
-<p><img src="https://i.loli.net/2020/03/06/yAWoQBiHdCfUpF7.png"></p>
-<p>在用户密钥处导入id_rsa</p>
-<p><img src="https://i.loli.net/2020/03/06/IupVstZ5hENKW8R.png"></p>
-<p>在用户身份验证中，方法选择Public Key，密钥选择刚导入的id_rsa即可</p>
-<p><img src="https://i.loli.net/2020/03/06/YWtmJD1qTL6zNid.png"></p>
-<p><a target="_blank" rel="noopener" href="https://termius.com/">Termius</a></p>
-<p>菜单栏→Keychain</p>
-<p><img src="https://i.loli.net/2020/03/06/CtAB6rNzFJdgMD5.png"></p>
-<p>在Keychain里选择NEW KEY，在Add Key的Label*处取个名，在Private Key*点击File导入id_rsa并保存</p>
-<p><img src="https://i.loli.net/2020/03/06/kwb2YNRlATGWexU.png"></p>
-<p>在连接设置里选择刚导入的key即可</p>
-<p><img src="https://i.loli.net/2020/03/06/qcxwvZa4dhIWpso.png"></p>
-<h4 id="安装V2ray"><a href="#安装V2ray" class="headerlink" title="安装V2ray"></a>安装V2ray</h4><p>具体参考</p>
-<p><a target="_blank" rel="noopener" href="https://github.com/233boy/v2ray/wiki/V2Ray%E4%B8%80%E9%94%AE%E5%AE%89%E8%A3%85%E8%84%9A%E6%9C%AC">V2Ray一键安装脚本</a></p>
+<p><img src="https://i.loli.net/2021/07/07/asept2zdc1Co9AB.png"></p>
+<p>forfiles参数说明</p>
+<table>
+<thead>
+<tr>
+<th align="left">参数</th>
+<th align="left">说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">/P <code>&lt;pathname&gt;</code></td>
+<td align="left">指定从其开始搜索的路径。 默认情况下，搜索从当前工作目录开始。</td>
+</tr>
+<tr>
+<td align="left">/M<code>&lt;searchmask&gt;</code></td>
+<td align="left">根据指定的搜索掩码搜索文件。 默认的 searchmask 为 <code>*</code> 。</td>
+</tr>
+<tr>
+<td align="left">/S</td>
+<td align="left">指示 <strong>forfiles</strong> 命令以递归方式搜索子目录。</td>
+</tr>
+<tr>
+<td align="left">/C <code>&lt;command&gt;</code></td>
+<td align="left">对每个文件运行指定的命令。 命令字符串应以双引号括起来。 默认命令为 <code>&quot;cmd /c echo @file&quot;</code> 。</td>
+</tr>
+<tr>
+<td align="left">@PATH</td>
+<td align="left">文件的完整路径。</td>
+</tr>
+</tbody></table>
+<p>详见<a target="_blank" rel="noopener" href="https://docs.microsoft.com/zh-cn/windows-server/administration/windows-commands/forfiles">https://docs.microsoft.com/zh-cn/windows-server/administration/windows-commands/forfiles</a></p>
 
                 
             </div>
@@ -615,8 +580,8 @@ ssh-copy-id -i ~/.ssh/id_rsa.pub root@127.0.0.1<span aria-hidden="true" class="l
                     
                         <div class="article-tag">
                             
-                                <a href="/tags/Linux/">
-                                    <span class="chip bg-color">Linux</span>
+                                <a href="/tags/Windows/">
+                                    <span class="chip bg-color">Windows</span>
                                 </a>
                             
                         </div>
@@ -684,17 +649,18 @@ ssh-copy-id -i ~/.ssh/id_rsa.pub root@127.0.0.1<span aria-hidden="true" class="l
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
+                <i class="far fa-dot-circle"></i>&nbsp;本篇
+            </div>
             <div class="card">
-                <a href="/archives/2e214463/">
+                <a href="/archives/36686/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/19.jpg" class="responsive-img" alt="Root用户下运行Google Chrome">
+                        <img src="/medias/featureimages/17.jpg" class="responsive-img" alt="IMEWDBLD.EXE文件下载">
                         
-                        <span class="card-title">Root用户下运行Google Chrome</span>
+                        <span class="card-title">IMEWDBLD.EXE文件下载</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -704,9 +670,9 @@ ssh-copy-id -i ~/.ssh/id_rsa.pub root@127.0.0.1<span aria-hidden="true" class="l
                         
                     </div>
                     <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2020-03-06
-                        </span>
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2021-07-07
+                            </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
@@ -719,11 +685,12 @@ ssh-copy-id -i ~/.ssh/id_rsa.pub root@127.0.0.1<span aria-hidden="true" class="l
                         </span>
                     </div>
                 </div>
+
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/%E6%8A%80%E6%9C%AF%E5%88%86%E4%BA%AB/">
-                        <span class="chip bg-color">技术分享</span>
+                    <a href="/tags/Windows/">
+                        <span class="chip bg-color">Windows</span>
                     </a>
                     
                 </div>
@@ -737,13 +704,12 @@ ssh-copy-id -i ~/.ssh/id_rsa.pub root@127.0.0.1<span aria-hidden="true" class="l
                 下一篇&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/archives/41a0b815/">
+                <a href="/archives/57083/">
                     <div class="card-image">
                         
+                        <img src="https://cdn.jsdelivr.net/gh/xcxmiku/xcxmiku.github.io/medias/featureimages/16.jpg" class="responsive-img" alt="CVE-2020-0796 RCE和LPE">
                         
-                        <img src="/medias/featureimages/2.jpg" class="responsive-img" alt="acunetix_13.0.200205121安装与破解">
-                        
-                        <span class="card-title">acunetix_13.0.200205121安装与破解</span>
+                        <span class="card-title">CVE-2020-0796 RCE和LPE</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -754,7 +720,7 @@ ssh-copy-id -i ~/.ssh/id_rsa.pub root@127.0.0.1<span aria-hidden="true" class="l
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2020-02-18
+                                <i class="far fa-clock fa-fw icon-date"></i>2020-03-31
                             </span>
                         <span class="publish-author">
                             
@@ -773,6 +739,10 @@ ssh-copy-id -i ~/.ssh/id_rsa.pub root@127.0.0.1<span aria-hidden="true" class="l
                     
                     <a href="/tags/%E8%B5%84%E6%BA%90%E5%88%86%E4%BA%AB/">
                         <span class="chip bg-color">资源分享</span>
+                    </a>
+                    
+                    <a href="/tags/%E6%BC%8F%E6%B4%9E%E5%A4%8D%E7%8E%B0/">
+                        <span class="chip bg-color">漏洞复现</span>
                     </a>
                     
                 </div>
