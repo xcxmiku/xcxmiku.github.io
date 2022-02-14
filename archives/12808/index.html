@@ -4,7 +4,7 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="XML外部实体注入(XXE), 小晨曦 小晨曦的博客">
+    <meta name="keywords" content="天擎,新版天擎,卸载,退出,天擎卸载">
     <meta name="description" content="小晨曦的博客">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
@@ -16,7 +16,7 @@
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>XML外部实体注入(XXE) | 小晨曦</title>
+    <title>新版天擎绕过秘密卸载/退出 | 小晨曦</title>
     <link rel="icon" type="image/x-icon, image/vnd.microsoft.icon" href="/favicon.ico">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
@@ -330,12 +330,12 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/15.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/7.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">XML外部实体注入(XXE)</h1>
+                    <h1 class="description center-align post-title">新版天擎绕过秘密卸载/退出</h1>
                 </div>
             </div>
         </div>
@@ -451,8 +451,8 @@
                     
                     <div class="article-tag">
                         
-                            <a href="/tags/XXE/">
-                                <span class="chip bg-color">XXE</span>
+                            <a href="/tags/Windows/">
+                                <span class="chip bg-color">Windows</span>
                             </a>
                         
                     </div>
@@ -476,21 +476,21 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2019-10-16
+                    2022-02-14
                 </div>
                 
 
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
-                    2019-10-16
+                    2022-02-14
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    196
+                    124
                 </div>
                 
 
@@ -520,13 +520,18 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>XXE Injection即XML External Entity Injection,也就是XML外部实体注入攻击.漏洞是在对非安全的外部实体数据进行处理时引发的安全问题.</p>
-<p>在XML1.0标准里,XML文档结构里定义了实体(entity)这个概念.实体可以通过预定义在文档中调用,实体的标识符可访问本地或远程内容.如果构造特殊的实体就可以做到任意文件读取。</p>
-<p>想了解XXE可以去看先知社区的这篇文章<a target="_blank" rel="noopener" href="https://xz.aliyun.com/t/3357">一篇文章带你深入理解漏洞之 XXE 漏洞</a>。</p>
-<h2 id="漏洞发现"><a href="#漏洞发现" class="headerlink" title="漏洞发现"></a>漏洞发现</h2><p>抓包某登录框，发现是使用XML传输切会回显登录用户名</p>
-<p><img src="https://i.loli.net/2019/10/28/XuiFc5BDROknwpe.png"></p>
-<h2 id="漏洞利用"><a href="#漏洞利用" class="headerlink" title="漏洞利用"></a>漏洞利用</h2><p>构建外部实体读取etc/passwd成功</p>
-<p><img src="https://i.loli.net/2019/10/28/6bYKjNZfDOJ4L5P.png"></p>
+                <h2 id="旧版方式"><a href="#旧版方式" class="headerlink" title="旧版方式"></a>旧版方式</h2><pre class="line-numbers language-none"><code class="language-none">C:\Program Files (x86)\QAX\360safe\EntClient\conf\EntBase.dat<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p>将天擎安装目录的该文件里面的uipass，qtpass改为空值，如果权限不够，则可以试试：</p>
+<p>1.关闭天擎自我保护。</p>
+<p>2.文件粉碎。</p>
+<p>3.进安全模式。</p>
+<p>4.进PE。</p>
+<h2 id="新版方式"><a href="#新版方式" class="headerlink" title="新版方式"></a>新版方式</h2><pre class="line-numbers language-none"><code class="language-none">\HKEY_LOCAL_MACHINE\SOFTWARE\WOW6432Node\QI-ANXIN Tianqing\config\base<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p>将该注册表下的client_pwd_check.prevent_uninstall.static_pwd，client_pwd_check.prevent_exit.enabled.server改为空值，如果权限不够，则可以试试：</p>
+<p>1.关闭天擎自我保护。</p>
+<p>2.进安全模式。</p>
 
                 
             </div>
@@ -541,8 +546,8 @@
                     
                         <div class="article-tag">
                             
-                                <a href="/tags/XXE/">
-                                    <span class="chip bg-color">XXE</span>
+                                <a href="/tags/Windows/">
+                                    <span class="chip bg-color">Windows</span>
                                 </a>
                             
                         </div>
@@ -614,13 +619,13 @@
             <div class="article-badge left-badge text-color">
                 <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
             <div class="card">
-                <a href="/archives/f8e3d21b/">
+                <a href="/archives/59972/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/2.jpg" class="responsive-img" alt="简单的PHP反序列化">
+                        <img src="/medias/featureimages/21.jpg" class="responsive-img" alt="小爱同学打开电脑">
                         
-                        <span class="card-title">简单的PHP反序列化</span>
+                        <span class="card-title">小爱同学打开电脑</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -631,7 +636,7 @@
                     </div>
                     <div class="publish-info">
                         <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2019-10-16
+                            <i class="far fa-clock fa-fw icon-date"></i>2022-02-14
                         </span>
                         <span class="publish-author">
                             
@@ -648,8 +653,8 @@
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/PHP/">
-                        <span class="chip bg-color">PHP</span>
+                    <a href="/tags/openwrt/">
+                        <span class="chip bg-color">openwrt</span>
                     </a>
                     
                 </div>
@@ -663,13 +668,13 @@
                 下一篇&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/archives/b0c3a4a4/">
+                <a href="/archives/36686/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/20.jpg" class="responsive-img" alt="凡诺CMS文件包含漏洞">
+                        <img src="/medias/featureimages/17.jpg" class="responsive-img" alt="IMEWDBLD.EXE文件下载">
                         
-                        <span class="card-title">凡诺CMS文件包含漏洞</span>
+                        <span class="card-title">IMEWDBLD.EXE文件下载</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -680,7 +685,7 @@
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2019-10-16
+                                <i class="far fa-clock fa-fw icon-date"></i>2021-07-07
                             </span>
                         <span class="publish-author">
                             
@@ -697,8 +702,8 @@
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/%E6%96%87%E4%BB%B6%E5%8C%85%E5%90%AB/">
-                        <span class="chip bg-color">文件包含</span>
+                    <a href="/tags/Windows/">
+                        <span class="chip bg-color">Windows</span>
                     </a>
                     
                 </div>

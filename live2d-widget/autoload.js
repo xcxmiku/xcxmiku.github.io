@@ -34,7 +34,7 @@ if (screen.width >= 768) {
 		initWidget({
 			waifuPath: live2d_path + "waifu-tips.json",
 			//apiPath: "https://live2d.fghrsh.net/api/",
-			cdnPath: "https://unpkg.zhimg.com/akilar-live2dapi/"
+			cdnPath: "https://npm.elemecdn.com/akilar-live2dapi/"
 		});
 	});
 }

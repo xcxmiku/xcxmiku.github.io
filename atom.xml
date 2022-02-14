@@ -6,7 +6,7 @@
   <link href="http://xcxmiku.com/atom.xml" rel="self"/>
   
   <link href="http://xcxmiku.com/"/>
-  <updated>2021-07-07T03:02:53.794Z</updated>
+  <updated>2022-02-14T11:29:44.846Z</updated>
   <id>http://xcxmiku.com/</id>
   
   <author>
@@ -15,6 +15,57 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>小爱同学打开电脑</title>
+    <link href="http://xcxmiku.com/archives/59972/"/>
+    <id>http://xcxmiku.com/archives/59972/</id>
+    <published>2022-02-14T08:44:35.000Z</published>
+    <updated>2022-02-14T11:29:44.846Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h2 id=&quot;想法&quot;&gt;&lt;a href=&quot;#想法&quot; class=&quot;headerlink&quot; title=&quot;想法&quot;&gt;&lt;/a&gt;想法&lt;/h2&gt;&lt;p&gt;之前都是登陆路由器后用wake on lan唤醒电脑，最近突然想到用小爱语音控制电脑开机。网上大致有这几种方案&lt;/p&gt;
+&lt;pre</summary>
+        
+      
+    
+    
+    
+    <category term="技术分享" scheme="http://xcxmiku.com/categories/%E6%8A%80%E6%9C%AF%E5%88%86%E4%BA%AB/"/>
+    
+    
+    <category term="openwrt" scheme="http://xcxmiku.com/tags/openwrt/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>新版天擎绕过秘密卸载/退出</title>
+    <link href="http://xcxmiku.com/archives/12808/"/>
+    <id>http://xcxmiku.com/archives/12808/</id>
+    <published>2022-02-14T08:24:35.000Z</published>
+    <updated>2022-02-14T08:41:22.277Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h2 id=&quot;旧版方式&quot;&gt;&lt;a href=&quot;#旧版方式&quot; class=&quot;headerlink&quot; title=&quot;旧版方式&quot;&gt;&lt;/a&gt;旧版方式&lt;/h2&gt;&lt;pre class=&quot;line-numbers language-none&quot;&gt;&lt;code</summary>
+        
+      
+    
+    
+    
+    <category term="技术分享" scheme="http://xcxmiku.com/categories/%E6%8A%80%E6%9C%AF%E5%88%86%E4%BA%AB/"/>
+    
+    
+    <category term="Windows" scheme="http://xcxmiku.com/tags/Windows/"/>
+    
+  </entry>
   
   <entry>
     <title>IMEWDBLD.EXE文件下载</title>
